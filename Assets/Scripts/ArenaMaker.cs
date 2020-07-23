@@ -5,6 +5,8 @@ using UnityEngine;
 public class ArenaMaker : MonoBehaviour
 {
   public GameObject hexagonPrefab;
+  public GameObject wallPrefab;
+
   // public float ceilingHeight = ;
   public int radius;
   public float sideLength = 4f;
@@ -29,56 +31,59 @@ public class ArenaMaker : MonoBehaviour
       Debug.Log("Radius: " + r);
       x = 0;
       z = r;
-      Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
-
+      DrawHex( r, GetCoordinates(x, z) );
       for ( int i = 0; i < r; i++ )
       {
         x = x + 1;
         z = z - 1;
-        Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
+        DrawHex( r, GetCoordinates(x, z) );
       }
-
       for ( int i = 0; i < r; i++ )
       {
         // x = x + 1;
         z = z - 1;
-        Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
+        DrawHex( r, GetCoordinates(x, z) );
       }
-
       for ( int i = 0; i < r; i++ )
       {
         x = x - 1;
         // z = z - 1;
-        Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
+        DrawHex( r, GetCoordinates(x, z) );
       }
-
       for ( int i = 0; i < r; i++ )
       {
         x = x - 1;
         z = z + 1;
-        Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
+        DrawHex( r, GetCoordinates(x, z) );
       }
-
       for ( int i = 0; i < r; i++ )
       {
         // x = x + 1;
         z = z + 1;
-        Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
+        DrawHex( r, GetCoordinates(x, z) );
       }
-
       for ( int i = 0; i < r; i++ )
       {
         x = x + 1;
         // z = z - 1;
-        Instantiate( hexagonPrefab, GetCoordinates(x, z), Quaternion.identity );
+        DrawHex( r, GetCoordinates(x, z) );
       }
-
       // float y = -r;
     }
-
-
   }
 
+  private void DrawHex( int r, Vector3 pos )
+  {
+    if ( r == 0 ) { return; }
+    if ( r < radius - 1 )
+    {
+      Instantiate( hexagonPrefab, pos, Quaternion.identity );
+    }
+    else
+    {
+      Instantiate( wallPrefab, pos, Quaternion.identity );
+    }
+  }
 
 
   private Vector3 GetCoordinates( float r, float b )
