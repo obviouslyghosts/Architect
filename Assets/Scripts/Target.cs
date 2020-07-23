@@ -5,6 +5,9 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
   public float health = 50f;
+  public bool isPillar = false;
+  public Rigidbody hex;
+  public GameObject pillar;
 
   public void TakeDamage( float amount )
   {
@@ -18,6 +21,16 @@ public class Target : MonoBehaviour
 
   private void Die()
   {
-    Destroy( gameObject );
+    if ( isPillar )
+    {
+      hex.isKinematic = false;
+      Destroy( gameObject.GetComponent<MeshCollider>() );
+      Destroy( pillar );
+    }
+    else
+    {
+      Destroy( gameObject );
+    }
+
   }
 }
