@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3119920438113736336}
   - component: {fileID: 6580073109934699512}
   - component: {fileID: 272710425834529273}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HexMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4427889773743449054}
   - component: {fileID: 7600799138400771966}
   - component: {fileID: 584656293019406787}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 4638039307949054179}
   - component: {fileID: 8144972647495005428}
   - component: {fileID: 3980232295012237119}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
