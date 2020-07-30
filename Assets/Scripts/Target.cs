@@ -8,6 +8,7 @@ public class Target : MonoBehaviour
   public bool isPillar = false;
   public Rigidbody hex;
   public GameObject pillar;
+  public Crusher crusher;
 
   public void TakeDamage( float amount )
   {
@@ -24,6 +25,10 @@ public class Target : MonoBehaviour
     if ( isPillar )
     {
       hex.isKinematic = false;
+      if ( crusher != null )
+      {
+        crusher.SetCrushable( true );
+      }
       Destroy( gameObject.GetComponent<MeshCollider>() );
       Destroy( pillar );
     }
