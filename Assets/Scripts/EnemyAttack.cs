@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
-
+  public Vector2 speed = Vector2.one;
+  public Vector2 acceleration = Vector2.one;
   public EnemyAnim enemyAnim;
+  public NavMeshAgent agent;
+
 
   private void OnTriggerEnter(Collider other)
   {
     if ( other.gameObject.tag == "Player" )
     {
-      enemyAnim.SetAttack( true );// anim.SetBool( "Attacking", true );
+      enemyAnim.SetAttack( true );
+      agent.speed = speed.y;
+      agent.acceleration = acceleration.y;
     }
   }
 
@@ -19,9 +25,9 @@ public class EnemyAttack : MonoBehaviour
   {
     if ( other.gameObject.tag == "Player" )
     {
-      enemyAnim.SetAttack( false );// anim.SetBool( "Attacking", true );
-
-      // enemyAnim.SetBool( "Attacking", false );
+      enemyAnim.SetAttack( false );
+      agent.speed = speed.x;
+      agent.acceleration = acceleration.x;
     }
   }
 

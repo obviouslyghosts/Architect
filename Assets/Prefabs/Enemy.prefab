@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7042453064194961687}
   - component: {fileID: 3384526063985602774}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7084931158569240413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.05, z: 1.5}
+  m_LocalPosition: {x: 0, y: 1.05, z: 6.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7094431586753662550}
@@ -78,7 +78,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.67, y: 1, z: 4}
+  m_Size: {x: 0.67, y: 1, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3384526063985602774
 MonoBehaviour:
@@ -92,7 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f463e027dbdcad04d888d757a0fca57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: {x: 3.5, y: 15}
+  acceleration: {x: 8, y: 60}
   enemyAnim: {fileID: 6758445596484935464}
+  agent: {fileID: 5208607398192589536}
 --- !u!1 &7094431586753662553
 GameObject:
   m_ObjectHideFlags: 0
