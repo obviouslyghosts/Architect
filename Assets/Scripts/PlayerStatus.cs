@@ -8,14 +8,21 @@ public class PlayerStatus : MonoBehaviour
   public float health = 25f;
   public Color colorTransparent;
   public Color colorBlood;
+  public Color colorDeath;
   // private Color colorCurrent;
   public Image damageScreen;
   private bool takingDamage = false;
+  private bool dead = false;
 
   public void AdjustHealth( float v )
   {
     health += v;
-    if ( v < 0 )
+    if ( health <= 0f )
+    {
+      GetComponent<PlayerMovement>().SetMovement( false );
+      dead = true;
+    }
+    else if ( v < 0 )
     {
       takingDamage = true;
       damageScreen.color = colorBlood;
@@ -36,6 +43,15 @@ public class PlayerStatus : MonoBehaviour
       {
         damageScreen.color = colorTransparent;
         takingDamage = false;
+      }
+    }
+    else if ( dead )
+    {
+      damageScreen.color = Color.Lerp( damageScreen.color, colorDeath, 20 * Time.deltaTime);
+      if ( damageScreen.color.a >= 0.9 )
+      {
+        damageScreen.color = colorDeath;
+        dead = false;
       }
     }
   }

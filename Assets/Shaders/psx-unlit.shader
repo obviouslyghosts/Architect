@@ -1,8 +1,10 @@
 ﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+// https://answers.unity.com/questions/376376/adding-tint-color-variable-to-shader.html
 
 Shader "psx/unlit" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
+		//_TintColor("Color Tint", Color) = (1,1,1,1)
 	}
 		SubShader{
 		Tags{ "RenderType" = "Opaque" }
@@ -42,13 +44,13 @@ Shader "psx/unlit" {
 		vertex.xyz *= snapToPixel.w;
 		o.pos = vertex;
 
-		//Vertex lighting 
+		//Vertex lighting
 		o.color = v.color*UNITY_LIGHTMODEL_AMBIENT;;
 
 		float distance = length(mul(UNITY_MATRIX_MV,v.vertex));
 
 		//Affine Texture Mapping
-		float4 affinePos = vertex;//vertex;				
+		float4 affinePos = vertex;//vertex;
 		o.uv_MainTex = TRANSFORM_TEX(v.texcoord, _MainTex);
 		o.uv_MainTex *= distance + (vertex.w*(UNITY_LIGHTMODEL_AMBIENT.a * 8)) / distance / 2;
 		o.normal = distance + (vertex.w*(UNITY_LIGHTMODEL_AMBIENT.a * 8)) / distance / 2;

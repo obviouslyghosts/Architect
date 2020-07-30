@@ -155,6 +155,9 @@ MonoBehaviour:
   muzzleFlash: {fileID: 126032925}
   impactEffect: {fileID: 1321485899337236021, guid: ff3b1fc66ab5e0a4c9f0941c2e6d1768,
     type: 3}
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!135 &125935012
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5839,6 +5842,7 @@ MonoBehaviour:
   speed: 12
   gravity: -19.62
   jumpHeight: 1
+  canMove: 1
   groundCheck: {fileID: 2098009262}
   groundDistance: 0.4
   groundMask:
@@ -5872,6 +5876,7 @@ MonoBehaviour:
   health: 25
   colorTransparent: {r: 1, g: 0, b: 0, a: 0}
   colorBlood: {r: 0.66, g: 0.113, b: 0.206, a: 0.5176471}
+  colorDeath: {r: 0, g: 0, b: 0, a: 1}
   damageScreen: {fileID: 2049690451}
 --- !u!1 &963194225
 GameObject:
@@ -6543,6 +6548,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1865652755333332033, guid: 917d44cf8e8eace48b53ff85b6de8d61,
+        type: 3}
+      propertyPath: timer
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6758445596484935464, guid: 917d44cf8e8eace48b53ff85b6de8d61,
         type: 3}
       propertyPath: agent
@@ -6611,7 +6621,7 @@ PrefabInstance:
     - target: {fileID: 7094431586753662553, guid: 917d44cf8e8eace48b53ff85b6de8d61,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 917d44cf8e8eace48b53ff85b6de8d61, type: 3}

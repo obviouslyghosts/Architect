@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAttack : MonoBehaviour
+public class EnemyVision : MonoBehaviour
 {
   public Vector2 speed = Vector2.one;
   public Vector2 acceleration = Vector2.one;

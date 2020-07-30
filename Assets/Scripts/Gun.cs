@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
   public Camera fpsCam;
   public ParticleSystem muzzleFlash;
   public GameObject impactEffect;
+  public LayerMask ignoreLayer;
 
   private float nextTimeToFire = 0f;
 
@@ -32,14 +33,20 @@ public class Gun : MonoBehaviour
     muzzleFlash.Play();
 
     RaycastHit hit;
-    if ( Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) )
+    // if (Physics.Raycast(Camera.main.ScreenPointToRay(location), out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Terrain")))
+    if ( Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, ~ignoreLayer) )
     {
-      Debug.Log( hit.transform.name );
-
+      // Debug.Log( hit.transform.name );
       Target target = hit.transform.GetComponent<Target>();
+      EnemyStatus eStatus = hit.transform.GetComponent<EnemyStatus>();
       if ( target != null )
       {
         target.TakeDamage( damage );
+      }
+
+      if ( eStatus != null )
+      {
+        eStatus.AdjustHealth( -damage );
       }
 
       if ( hit.rigidbody != null)
