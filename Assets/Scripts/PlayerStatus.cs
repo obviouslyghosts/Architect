@@ -38,7 +38,7 @@ public class PlayerStatus : MonoBehaviour
   {
     if ( takingDamage )
     {
-      damageScreen.color = Color.Lerp( damageScreen.color, colorTransparent, 20 * Time.deltaTime);
+      damageScreen.color = Color.Lerp( damageScreen.color, colorTransparent, 5 * Time.deltaTime);
       if ( damageScreen.color.a <= 0.1 )
       {
         damageScreen.color = colorTransparent;
