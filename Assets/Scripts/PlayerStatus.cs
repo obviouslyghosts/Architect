@@ -11,31 +11,51 @@ public class PlayerStatus : MonoBehaviour
   public Color colorDeath;
   // private Color colorCurrent;
   public Image damageScreen;
+  public GameController gameController;
+  public MouseLook mouseLook;
   private bool takingDamage = false;
   private bool dead = false;
+  public float deathTimer = 1f;
+  private float alarm = 0f;
 
   public void AdjustHealth( float v )
   {
-    health += v;
-    if ( health <= 0f )
+    if ( health > 0f )
     {
-      GetComponent<PlayerMovement>().SetMovement( false );
-      dead = true;
-    }
-    else if ( v < 0 )
-    {
-      takingDamage = true;
-      damageScreen.color = colorBlood;
+      health += v;
+      if ( health <= 0f )
+      {
+        GetComponent<PlayerMovement>().SetMovement( false );
+        dead = true;
+        alarm = deathTimer;
+      }
+      else if ( v < 0 )
+      {
+        takingDamage = true;
+        damageScreen.color = colorBlood;
+      }
     }
   }
 
   private void Start()
   {
     damageScreen.color = colorTransparent;
+    // Game Controller is Singleton
+    gameController = GameObject.Find("GameController").GetComponent<GameController>();
   }
 
   private void Update( )
   {
+    if ( alarm > 0 )
+    {
+      alarm -= Time.deltaTime;
+      if ( alarm <= 0 )
+      {
+        mouseLook.Unlock();
+        gameController.IsDead();
+      }
+
+    }
     if ( takingDamage )
     {
       damageScreen.color = Color.Lerp( damageScreen.color, colorTransparent, 5 * Time.deltaTime);

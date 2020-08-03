@@ -7,6 +7,9 @@ public class GameController : MonoBehaviour
 {
   public static GameController instance;
   public string arena;
+  public string title;
+  public string death;
+
 
   private void Awake()
   {
@@ -22,7 +25,22 @@ public class GameController : MonoBehaviour
 
   public void StartArena()
   {
-    SceneManager.LoadScene( arena );    
+    SceneManager.LoadScene( arena );
+  }
+
+  public void StartTitle()
+  {
+    SceneManager.LoadScene( title );
+  }
+
+  public void RestartArena()
+  {
+    SceneManager.LoadScene( arena );
+  }
+
+  public void IsDead()
+  {
+    SceneManager.LoadScene( death );
   }
 
 
