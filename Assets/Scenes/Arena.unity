@@ -6300,8 +6300,21 @@ MonoBehaviour:
   - {fileID: 7094431586753662553, guid: 917d44cf8e8eace48b53ff85b6de8d61, type: 3}
   - {fileID: 7094431586753662553, guid: 917d44cf8e8eace48b53ff85b6de8d61, type: 3}
   waveTimers:
-  - 10
-  - 6
+  - 1
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
 --- !u!1 &1440376787
 GameObject:
   m_ObjectHideFlags: 0
