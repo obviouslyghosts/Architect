@@ -77,11 +77,13 @@ public class ArenaMaker : MonoBehaviour
     if ( r == 0 ) { return; }
     if ( r < radius - 1 )
     {
-      Instantiate( hexagonPrefab, pos, Quaternion.identity );
+      GameObject hex = Instantiate( hexagonPrefab, pos, Quaternion.identity );
+      hex.transform.SetParent( this.transform );
     }
     else
     {
-      Instantiate( wallPrefab, pos, Quaternion.identity );
+      GameObject wall = Instantiate( wallPrefab, pos, Quaternion.identity );
+      wall.transform.SetParent( this.transform );
     }
   }
 

@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6737369397123808564}
   - component: {fileID: 5321720104830756846}
   - component: {fileID: 9024389171361975065}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1384397401997127222}
   - component: {fileID: 1865652755333332033}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

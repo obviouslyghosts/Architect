@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ChaseTarget
+  - Spawn
   layers:
   - Default
   - TransparentFX
