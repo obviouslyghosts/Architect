@@ -15,8 +15,16 @@ public class PlayerStatus : MonoBehaviour
   public MouseLook mouseLook;
   private bool takingDamage = false;
   private bool dead = false;
+  private bool crushed = false;
   public float deathTimer = 1f;
   private float alarm = 0f;
+  private GameObject cam;
+  private Vector3 camSPos;
+  private Vector3 camEPos;
+  private float sTime;
+  private float journey;
+  public float crushSpeed = 4f;
+
 
   public void AdjustHealth( float v )
   {
@@ -37,11 +45,25 @@ public class PlayerStatus : MonoBehaviour
     }
   }
 
+  public void Crushed( bool v )
+  {
+    crushed = v;
+    if ( crushed )
+    {
+      cam = GameObject.Find("PlayerCamera").gameObject;
+      camSPos = cam.transform.position;
+      camEPos = new Vector3( camSPos.x, -2.0f, camSPos.z );
+      journey = Vector3.Distance( camSPos, camEPos );
+      sTime = Time.time;
+    }
+  }
+
   private void Start()
   {
     damageScreen.color = colorTransparent;
     // Game Controller is Singleton
     gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
   }
 
   private void Update( )
@@ -67,12 +89,26 @@ public class PlayerStatus : MonoBehaviour
     }
     else if ( dead )
     {
-      damageScreen.color = Color.Lerp( damageScreen.color, colorDeath, 20 * Time.deltaTime);
+      damageScreen.color = Color.Lerp( damageScreen.color, colorDeath, 5 * Time.deltaTime);
       if ( damageScreen.color.a >= 0.9 )
       {
         damageScreen.color = colorDeath;
         dead = false;
       }
+    }
+    if ( crushed )
+    {
+      float distCovered = (Time.time - sTime) * crushSpeed;
+      float fractionOfJourney = distCovered / journey;
+      if ( fractionOfJourney >= 1 )
+      {
+        crushed = false;
+      }
+      else
+      {
+        cam.transform.position = Vector3.Lerp( camSPos, camEPos, fractionOfJourney);
+      }
+
     }
   }
 

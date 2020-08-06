@@ -5176,7 +5176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4671fd0edb8e55640bf95da67a9de875, type: 2}
+  - {fileID: 2100000, guid: d91715e0be4b11b49aef45d656271271, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6055,6 +6055,7 @@ MonoBehaviour:
   gameController: {fileID: 718212434}
   mouseLook: {fileID: 963194229}
   deathTimer: 1
+  crushSpeed: 15
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6070,7 +6071,7 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194230}
   m_Layer: 9
-  m_Name: Main Camera
+  m_Name: PlayerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6300,10 +6301,10 @@ MonoBehaviour:
   - {fileID: 7094431586753662553, guid: 917d44cf8e8eace48b53ff85b6de8d61, type: 3}
   - {fileID: 7094431586753662553, guid: 917d44cf8e8eace48b53ff85b6de8d61, type: 3}
   waveTimers:
-  - 1
-  - 2
-  - 2
-  - 2
+  - 5
+  - 5
+  - 10
+  - 10
   - 2
   - 2
   - 2
