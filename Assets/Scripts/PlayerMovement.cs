@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
   public float gravity = -9.81f;
   public float jumpHeight = 3f;
   public bool canMove = true;
+  public GunAnimation gunAnim;
+
 
   public Transform groundCheck;
   public float groundDistance = 0.4f;
@@ -40,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
       Vector3 move = transform.right * x + transform.forward * y;
 
       controller.Move( move * speed * Time.deltaTime );
+      
+      gunAnim.Move( ( move * speed * Time.deltaTime ).magnitude );
 
       if ( Input.GetButtonDown( "Jump" ) )
       {

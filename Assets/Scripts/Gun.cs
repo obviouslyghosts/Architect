@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
   public float range = 100f;
   public float impactForce = 30f;
   public float fireRate = 15f;
+  public GunAnimation gunAnim;
 
   public Camera fpsCam;
   public ParticleSystem muzzleFlash;
@@ -31,6 +32,7 @@ public class Gun : MonoBehaviour
   void Shoot()
   {
     muzzleFlash.Play();
+    gunAnim.Shoot( true );
 
     RaycastHit hit;
     // if (Physics.Raycast(Camera.main.ScreenPointToRay(location), out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Terrain")))

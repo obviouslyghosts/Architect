@@ -20,6 +20,7 @@ public class PlayerStatus : MonoBehaviour
   private float alarm = 0f;
   private GameObject cam;
   private Vector3 camSPos;
+  public float crushGround;
   private Vector3 camEPos;
   private float sTime;
   private float journey;
@@ -52,7 +53,7 @@ public class PlayerStatus : MonoBehaviour
     {
       cam = GameObject.Find("PlayerCamera").gameObject;
       camSPos = cam.transform.position;
-      camEPos = new Vector3( camSPos.x, -2.0f, camSPos.z );
+      camEPos = new Vector3( camSPos.x, crushGround, camSPos.z );
       journey = Vector3.Distance( camSPos, camEPos );
       sTime = Time.time;
     }
