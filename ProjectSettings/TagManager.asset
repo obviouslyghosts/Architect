@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ChaseTarget
   - Spawn
+  - Interact
   layers:
   - Default
   - TransparentFX

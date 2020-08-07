@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7846484100397431552}
   - component: {fileID: 7846484100397431556}
   - component: {fileID: 7846484100397431559}
+  - component: {fileID: 7232199153859984095}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -133,6 +134,19 @@ MonoBehaviour:
   deathTimer: 1
   crushGround: 0
   crushSpeed: 15
+--- !u!114 &7232199153859984095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846484100397431553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44880207645d8d8499a3ecfa349f6368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactText: {fileID: 0}
 --- !u!1 &7846484100577781888
 GameObject:
   m_ObjectHideFlags: 0
