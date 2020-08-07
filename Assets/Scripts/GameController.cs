@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+  public string titleScene;
   public static GameController instance;
   public string arena;
   public string title;
@@ -23,8 +24,16 @@ public class GameController : MonoBehaviour
     instance = this;
     DontDestroyOnLoad( gameObject );
 
-    SetPlayerMovement( false );
-    SetPlayerWeapon( false );
+    if ( SceneManager.GetActiveScene().name == titleScene )
+    {
+      SetPlayerMovement( false );
+      SetPlayerWeapon( false );
+      SetMouseVisibility( true );
+    }
+    else
+    {
+      SetMouseVisibility( false );
+    }
   }
 
   public void StartArena()
@@ -50,12 +59,16 @@ public class GameController : MonoBehaviour
     SceneManager.LoadScene( death );
   }
 
-  private void SetPlayerMovement( bool v )
+  public void SetPlayerMovement( bool v )
   {
     GameObject.Find( "UI-Title" ).SetActive( !v );
     GameObject.Find( "Player" ).GetComponent<PlayerMovement>().SetMovement( v );
     GameObject.Find( "PlayerCamera" ).GetComponent<MouseLook>().SetMovement( v );
-    GameObject.Find( "PlayerCamera" ).GetComponent<MouseLook>().LockState( !v );
+  }
+
+  public void SetMouseVisibility( bool v )
+  {
+    GameObject.Find( "PlayerCamera" ).GetComponent<MouseLook>().LockState( v );
   }
 
   public void SetPlayerWeapon( bool v )
