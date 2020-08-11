@@ -14,7 +14,7 @@ public class ArenaMaker : MonoBehaviour
   private float sqrt;
   private float s;
 
-  private void Start()
+  public void DrawArena()
   {
     // Draw Arena
     sqrt = Mathf.Sqrt(3) * sideLength;
