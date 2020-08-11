@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-  public string titleScene;
+  // public string titleScene;
   public static GameController instance;
   public string arena;
   public string title;
@@ -23,29 +23,34 @@ public class GameController : MonoBehaviour
     }
     instance = this;
     DontDestroyOnLoad( gameObject );
+    SetMouseVisibility( false );
 
-    if ( SceneManager.GetActiveScene().name == titleScene )
-    {
-      SetPlayerMovement( false );
-      SetPlayerWeapon( false );
-      SetMouseVisibility( true );
-    }
-    else
-    {
-      SetMouseVisibility( false );
-    }
+    // if ( SceneManager.GetActiveScene().name == title )
+    // {
+    //   SetPlayerMovement( false );
+    //   SetPlayerWeapon( false );
+    //   SetMouseVisibility( true );
+    // }
+    // else
+    // {
+    // }
   }
 
   public void StartArena()
   {
     // enable player movement
     SetPlayerMovement( true );
+    SetMouseVisibility( false );
+
     // SetPlayerWeapon( true );
     // SceneManager.LoadScene( arena );
   }
 
   public void StartTitle()
   {
+    // SetPlayerMovement( false );
+    // SetPlayerWeapon( false );
+    // SetMouseVisibility( true );
     SceneManager.LoadScene( title );
   }
 

@@ -8,6 +8,10 @@ public class PlayerInteraction : MonoBehaviour
   public GameObject interactText;
   private bool interacting;
   private GameObject interactingObj;
+  public float startTimer = 1f;
+  // private float timer = 0f;
+  private float alarm = -1f;
+  private string timerAction = "";
 
   private void Start()
   {
@@ -28,6 +32,17 @@ public class PlayerInteraction : MonoBehaviour
       }
     }
 
+    if ( alarm > 0f )
+    {
+      alarm -= Time.deltaTime;
+      if ( alarm <= 0f )
+      {
+        alarm = -1;
+        TimerTrigger( timerAction );
+        // triggered
+      }
+    }
+
   }
 
   private void Interact( string interactionType )
@@ -37,13 +52,28 @@ public class PlayerInteraction : MonoBehaviour
       case "Pickup":
         Destroy( interactingObj.transform.parent.gameObject );
         GameObject.Find( "GameController" ).GetComponent<GameController>().SetPlayerWeapon( true );
+        alarm = startTimer;
+        timerAction = "Start";
         break;
       default:
         break;
     }
   }
 
-  private void OnTriggerEnter(Collider other)
+  private void TimerTrigger( string timerType )
+  {
+    switch ( timerType )
+    {
+      case "Start":
+        // Destroy( interactingObj.transform.parent.gameObject );
+        GameObject.Find( "GameController" ).GetComponent<GameController>().RestartArena( );
+        break;
+      default:
+        break;
+    }
+  }
+
+  private void OnTriggerEnter( Collider other )
   {
     if ( other.gameObject.tag == "Interact" )
     {

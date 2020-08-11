@@ -17,14 +17,14 @@ public class ArenaController : MonoBehaviour
   {
     arenaMaker = GetComponent<ArenaMaker>();
     arenaMaker.DrawArena();
-    EnterThroughTunnel( false );
+    EnterThroughTunnel( resetHex:false );
   }
 
   public void EnterThroughTunnel( bool resetHex )
   {
     // Start Arena in tunnel
     // Draw Blood On Screen
-
+    Debug.Log( "tunnel stuff" );
     if ( resetHex )
     {
       ResetArenaHex();
@@ -38,7 +38,13 @@ public class ArenaController : MonoBehaviour
     GameObject t = Instantiate( tunnelPrefab, pos, Quaternion.identity );
     t.transform.LookAt( center );
 
+    player.GetComponent<CharacterController>().enabled = false;
+    // charController.enabled = false;
     player.transform.position = t.GetComponent<TunnelController>().GetPlayerSpawn();
+    // charController.enabled = true;
+    player.GetComponent<CharacterController>().enabled = true;
+    
+    // Debug.Log( player.transform.position );
 
     // Get 1 Wall, remember it, and Disable it
     // draw tunnel at that point

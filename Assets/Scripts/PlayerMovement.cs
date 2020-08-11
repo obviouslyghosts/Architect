@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
       Vector3 move = transform.right * x + transform.forward * y;
 
       controller.Move( move * speed * Time.deltaTime );
-      
+
       gunAnim.Move( ( move * speed * Time.deltaTime ).magnitude );
 
       if ( Input.GetButtonDown( "Jump" ) )
