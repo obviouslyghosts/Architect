@@ -55,6 +55,14 @@ public class PlayerInteraction : MonoBehaviour
         alarm = startTimer;
         timerAction = "Start";
         break;
+      case "Door":
+        bool qualifications = GameObject.Find( "Player" ).GetComponent<PlayerStatus>().HasKeyCard();
+        interactingObj.transform.parent.gameObject.GetComponent<GateController>().OpenGate( qualifications );
+        if ( qualifications )
+        {
+          ManualTriggerReset();
+        }
+        break;
       default:
         break;
     }
@@ -81,6 +89,13 @@ public class PlayerInteraction : MonoBehaviour
       interacting = true;
       interactingObj = other.gameObject;
     }
+  }
+
+  private void ManualTriggerReset()
+  {
+    interactText.SetActive( false );
+    interacting = false;
+    interactingObj = null;
   }
 
   private void OnTriggerExit(Collider other)

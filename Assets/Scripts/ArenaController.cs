@@ -41,9 +41,11 @@ public class ArenaController : MonoBehaviour
     player.GetComponent<CharacterController>().enabled = false;
     // charController.enabled = false;
     player.transform.position = t.GetComponent<TunnelController>().GetPlayerSpawn();
+    player.transform.LookAt( center );
+    
     // charController.enabled = true;
     player.GetComponent<CharacterController>().enabled = true;
-    
+
     // Debug.Log( player.transform.position );
 
     // Get 1 Wall, remember it, and Disable it

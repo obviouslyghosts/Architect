@@ -25,7 +25,7 @@ public class PlayerStatus : MonoBehaviour
   private float sTime;
   private float journey;
   public float crushSpeed = 4f;
-
+  public bool hasKeyCard = false;
 
   public void AdjustHealth( float v )
   {
@@ -44,6 +44,11 @@ public class PlayerStatus : MonoBehaviour
         damageScreen.color = colorBlood;
       }
     }
+  }
+
+  public bool HasKeyCard()
+  {
+    return hasKeyCard;
   }
 
   public void Crushed( bool v )
