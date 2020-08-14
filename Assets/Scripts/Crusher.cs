@@ -41,15 +41,32 @@ public class Crusher : MonoBehaviour
     }
   }
 
-  private void OnTriggerStay( Collider other )
+  private void OnCollisionStay( Collision other )
   {
     if ( other.gameObject.tag == "Player" )
     {
       Debug.Log( "Taking " + damage + " damage." );
-      other.gameObject.GetComponent<CharacterController>().enabled = false;
       // other.gameObject.GetComponent<PlayerStatus>().Crushed( true );
-      other.gameObject.GetComponent<PlayerStatus>().AdjustHealth( -damage, true );
+      if ( ableToCrush )
+      {
+        other.gameObject.GetComponent<CharacterController>().enabled = false;
+        other.gameObject.GetComponent<PlayerStatus>().AdjustHealth( -damage, true );
+      }
     }
   }
+
+  // private void OnTriggerStay( Collider other )
+  // {
+  //   if ( other.gameObject.tag == "Player" )
+  //   {
+  //     Debug.Log( "Taking " + damage + " damage." );
+  //     // other.gameObject.GetComponent<PlayerStatus>().Crushed( true );
+  //     if ( ableToCrush )
+  //     {
+  //       other.gameObject.GetComponent<CharacterController>().enabled = false;
+  //       other.gameObject.GetComponent<PlayerStatus>().AdjustHealth( -damage, true );
+  //     }
+  //   }
+  // }
 
 }
