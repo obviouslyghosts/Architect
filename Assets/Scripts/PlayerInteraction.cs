@@ -63,6 +63,9 @@ public class PlayerInteraction : MonoBehaviour
           ManualTriggerReset();
         }
         break;
+      case "CrushToggle":
+        GameObject.Find( "AnimatedHex" ).GetComponent<CrushController>().Trigger( );
+        break;
       default:
         break;
     }

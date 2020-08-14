@@ -1,35 +1,20 @@
 fileFormatVersion: 2
-guid: 2f479e75a1a0a9f45a54a8bdbf65e7ff
+guid: 3ab727d146b6735409bae9f825b07dff
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -1231554234872261009
-    second: Gate-Gate|Closed
+      74: -8361392347868777788
+    second: Crushed
   - first:
-      74: 1802009230629251534
-    second: Gate-Gate|Closing
+      74: 3117457548405703475
+    second: Rising
   - first:
-      74: 6314436019947365040
-    second: Gate-Gate|Idle-Spin
+      74: 1891691225963688805
+    second: Crushing
   - first:
-      74: 8751877729364577298
-    second: Gate-Gate|Open
-  - first:
-      74: -6711116993817037573
-    second: Gate-Gate|Opening
-  - first:
-      74: 4849289975190984472
-    second: Open.001
-  - first:
-      74: 2306272986826172479
-    second: Closed.001
-  - first:
-      74: -8812169164802508700
-    second: Closing.001
-  - first:
-      74: 1977370851530791749
-    second: Opening.001
+      74: -8224312510215303560
+    second: Primed
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -59,37 +44,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Opening.001
-      takeName: Opening.001
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 17
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Open.001
-      takeName: Open.001
+      name: Crushed
+      takeName: Crushed
       internalID: 0
       firstFrame: 0
       lastFrame: 1
@@ -117,11 +73,40 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Closed.001
-      takeName: Closed.001
+      name: Rising
+      takeName: Rising
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Crushing
+      takeName: Crushing
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -146,18 +131,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Closing.001
-      takeName: Closing.001
+      name: Primed
+      takeName: Primed
       internalID: 0
       firstFrame: 0
-      lastFrame: 22
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

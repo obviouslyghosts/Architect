@@ -4,75 +4,27 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-  public float health = 50f;
-  private float actualHealth = 0f;
   public bool isPillar = false;
-  private bool triggered = false;
-  public GameObject hex;
-  private Vector3 originalPos;
-  private Rigidbody hexRB;
+  public float health = 50f;
+  public GameObject destroyedVersion;
+  // private float actualHealth = 0f;
 
-  public GameObject pillar;
-  public Crusher crusher;
-
-  private void Start()
+  public void TakeDamage( float d )
   {
-    actualHealth = health;
-    hexRB = hex.GetComponent<Rigidbody>();
-    originalPos = hex.transform.position;
-  }
-
-  public void TakeDamage( float amount )
-  {
-    actualHealth -= amount;
-    if ( actualHealth <= 0 )
+    health -= d;
+    if ( health <= 0f )
     {
-      Die();
-    }
-
-  }
-
-  public void Reset( )
-  {
-    actualHealth = health;
-    if ( triggered )
-    {
-      triggered = false;
-
+      // dead
       if ( isPillar )
       {
-        hexRB.isKinematic = true;
-        hex.transform.position = originalPos;
-        SetPillar( true );
+        transform.parent.gameObject.GetComponent<CrushController>().Crush( true );
       }
-
-    }
-
-  }
-
-  private void Die()
-  {
-    triggered = true;
-    if ( isPillar )
-    {
-      hexRB.isKinematic = false;
-      if ( crusher != null )
-      {
-        crusher.SetCrushable( true );
-      }
-      SetPillar( false );
-      // Destroy( gameObject.GetComponent<MeshCollider>() );
-      // Destroy( pillar );
-    }
-    else
-    {
+      Instantiate(destroyedVersion, transform.position, transform.rotation );
       Destroy( gameObject );
     }
+
   }
 
-  private void SetPillar( bool v )
-  {
-    gameObject.GetComponent<MeshCollider>().enabled = v;
-    pillar.SetActive( v );
-  }
+
+
 }

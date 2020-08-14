@@ -42,7 +42,7 @@ public class ArenaController : MonoBehaviour
     // charController.enabled = false;
     player.transform.position = t.GetComponent<TunnelController>().GetPlayerSpawn();
     player.transform.LookAt( center );
-    
+
     // charController.enabled = true;
     player.GetComponent<CharacterController>().enabled = true;
 
@@ -69,7 +69,7 @@ public class ArenaController : MonoBehaviour
 
     foreach (GameObject h in hexes)
     {
-      h.GetComponent<Target>().Reset();
+      // h.GetComponent<Target>().Reset();
     }
 
   }
