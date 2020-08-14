@@ -8,6 +8,7 @@ public class CrushController : MonoBehaviour
   public MeshCollider hexCollision;
   // public GameObject interactable;
   public GameObject pillarPrefab;
+  public Crusher crusher;
   private float timer = 0f;
   private float alarm = 1f;
 
@@ -44,7 +45,9 @@ public class CrushController : MonoBehaviour
   {
     if ( isPrimed && v )
     {
+      Debug.Log("Crushing");
       hexAnimator.SetTrigger( "Crush" );
+      crusher.SetCrushable( true );
       isPrimed = false;
       // hexCollision.enabled = true;
       // interactable.SetActive( false );

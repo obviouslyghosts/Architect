@@ -289,8 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9800f333684d4154389bde4404cf1c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   isPillar: 1
-  hex: {fileID: 2741200522524757869}
-  pillar: {fileID: 3502308051100201704}
-  crusher: {fileID: 1785538897368880542}
+  health: 5
+  destroyedVersion: {fileID: 0}

@@ -8,10 +8,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081055246956054481}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4575734979276873811, guid: 3ab727d146b6735409bae9f825b07dff, type: 3}
 --- !u!95 &3718537885081865053
@@ -33,6 +33,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8541115747589737331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081055246956054481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8739fdfbe593744ba73f783a5434030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ableToCrush: 0
+  flatDamage: 1000
+  dangerTimer: 0.5
+  multiplier: 100
 --- !u!1 &7427361467865936355
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,6 +98,7 @@ MonoBehaviour:
   hexCollision: {fileID: 8528055104817117143}
   pillarPrefab: {fileID: 4479163251578525709, guid: 30b38abdfa7571f4a8896bc8a92e658a,
     type: 3}
+  crusher: {fileID: 8541115747589737331}
 --- !u!1001 &270717170754681472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -144,6 +161,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3ab727d146b6735409bae9f825b07dff,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3ab727d146b6735409bae9f825b07dff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 515951fb327939547a120861a948cdb2, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 3ab727d146b6735409bae9f825b07dff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1c1ffdf5fe73b454493fe2270f8b8715, type: 2}
     - target: {fileID: 919132149155446097, guid: 3ab727d146b6735409bae9f825b07dff,
         type: 3}
       propertyPath: m_Name

@@ -46,3 +46,4 @@ MonoBehaviour:
   arena: Arena
   title: TitleScreen
   death: DeathScreen
+  test: Test

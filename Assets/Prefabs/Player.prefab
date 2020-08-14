@@ -131,9 +131,10 @@ MonoBehaviour:
   damageScreen: {fileID: 0}
   gameController: {fileID: 0}
   mouseLook: {fileID: 7846484100577781892}
-  deathTimer: 1
+  deathTimer: 0.5
   crushGround: 0
   crushSpeed: 15
+  hasKeyCard: 0
 --- !u!114 &7232199153859984095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactText: {fileID: 0}
+  startTimer: 1
 --- !u!1 &7846484100577781888
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,10 @@ public class GameController : MonoBehaviour
   public string arena;
   public string title;
   public string death;
-  private GameObject playerGun;
+  public string test;
 
+  private GameObject playerGun;
+  private Vector3 playerPos;
 
   private void Awake()
   {
@@ -25,15 +27,6 @@ public class GameController : MonoBehaviour
     DontDestroyOnLoad( gameObject );
     SetMouseVisibility( false );
 
-    // if ( SceneManager.GetActiveScene().name == title )
-    // {
-    //   SetPlayerMovement( false );
-    //   SetPlayerWeapon( false );
-    //   SetMouseVisibility( true );
-    // }
-    // else
-    // {
-    // }
   }
 
   public void StartArena()
@@ -42,21 +35,23 @@ public class GameController : MonoBehaviour
     SetPlayerMovement( true );
     SetMouseVisibility( false );
 
-    // SetPlayerWeapon( true );
-    // SceneManager.LoadScene( arena );
   }
 
   public void StartTitle()
   {
-    // SetPlayerMovement( false );
-    // SetPlayerWeapon( false );
-    // SetMouseVisibility( true );
     SceneManager.LoadScene( title );
   }
 
   public void RestartArena()
   {
     SceneManager.LoadScene( arena );
+  }
+
+  public void Crushed()
+  {
+    Debug.Log( "Crushed" );
+
+    SceneManager.LoadScene( SceneManager.GetActiveScene().name );
   }
 
   public void IsDead()

@@ -27,7 +27,7 @@ public class PlayerStatus : MonoBehaviour
   public float crushSpeed = 4f;
   public bool hasKeyCard = false;
 
-  public void AdjustHealth( float v )
+  public void AdjustHealth( float v, bool c )
   {
     if ( health > 0f )
     {
@@ -43,6 +43,10 @@ public class PlayerStatus : MonoBehaviour
         takingDamage = true;
         damageScreen.color = colorBlood;
       }
+    }
+    if ( !crushed )
+    {
+      Crushed( c );
     }
   }
 
@@ -80,7 +84,16 @@ public class PlayerStatus : MonoBehaviour
       if ( alarm <= 0 )
       {
         mouseLook.Unlock();
-        gameController.IsDead();
+
+        if ( crushed )
+        {
+          gameController.Crushed();
+        }
+        else
+        {
+          gameController.IsDead();
+        }
+
       }
 
     }
@@ -108,7 +121,7 @@ public class PlayerStatus : MonoBehaviour
       float fractionOfJourney = distCovered / journey;
       if ( fractionOfJourney >= 1 )
       {
-        crushed = false;
+        // crushed = false;
       }
       else
       {

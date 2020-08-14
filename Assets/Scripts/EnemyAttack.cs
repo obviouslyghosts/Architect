@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
       if ( status != null )
       {
-        status.AdjustHealth( -attackDamage );
+        status.AdjustHealth( -attackDamage, false );
       }
       alarm = attackTimer;
     }
