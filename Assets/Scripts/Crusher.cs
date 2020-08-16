@@ -35,9 +35,6 @@ public class Crusher : MonoBehaviour
     {
       alarm -= Time.deltaTime;
       ableToCrush = ( alarm > 0 ) ? true : false;
-      // damage = flatDamage;
-      // damage += Time.deltaTime * multiplier;
-      // ableToCrush = ( damage > maxDamage ) ? false : true;
     }
   }
 
@@ -49,8 +46,8 @@ public class Crusher : MonoBehaviour
       // other.gameObject.GetComponent<PlayerStatus>().Crushed( true );
       if ( ableToCrush )
       {
-        other.gameObject.GetComponent<CharacterController>().enabled = false;
-        other.gameObject.GetComponent<PlayerStatus>().AdjustHealth( -damage, true );
+        // other.gameObject.GetComponent<CharacterController>().enabled = false;
+        other.gameObject.GetComponent<PlayerStatus>().DownCrush( );
       }
     }
   }

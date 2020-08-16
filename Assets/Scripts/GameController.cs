@@ -13,7 +13,12 @@ public class GameController : MonoBehaviour
   public string test;
 
   private GameObject playerGun;
+  // private Transform playerTrans;
   private Vector3 playerPos;
+  private Quaternion playerRot;
+  private bool upCrush = false;
+  private bool downCrush = false;
+  private bool enableCC = false;
 
   private void Awake()
   {
@@ -29,12 +34,50 @@ public class GameController : MonoBehaviour
 
   }
 
+  // private void Update()
+  // {
+  //   // how is this being started!!
+  //   if ( upCrush | downCrush )
+  //   {
+  //     Debug.Log("CRUSH START");
+  //     GameObject player = GameObject.Find( "Player" ).gameObject;
+  //
+  //     player.GetComponent<CharacterController>().enabled = false;
+  //     player.transform.position = new Vector3( playerPos.x, playerPos.y, playerPos.z );
+  //     player.transform.rotation = playerRot;
+  //     // FallThrough();
+  //     enableCC = true;
+  //
+  //     upCrush = false;
+  //     downCrush = false;
+  //   }
+  //
+  //   if ( enableCC )
+  //   {
+  //     GameObject.Find( "Player" ).gameObject.GetComponent<CharacterController>().enabled = true;
+  //     enableCC = false;
+  //   }
+  //
+  // }
+
+  public void ResetHexes()
+  {
+    // move to arena
+    GameObject[] hexes;
+    hexes = GameObject.FindGameObjectsWithTag("Hex");
+    foreach (GameObject h in hexes)
+    {
+      h.GetComponent<CrushController>().Chase();
+      // h.GetComponent<Target>().Reset();
+    }
+
+  }
+
   public void StartArena()
   {
     // enable player movement
     SetPlayerMovement( true );
     SetMouseVisibility( false );
-
   }
 
   public void StartTitle()
@@ -50,7 +93,12 @@ public class GameController : MonoBehaviour
   public void Crushed()
   {
     Debug.Log( "Crushed" );
-
+    GameObject player = GameObject.Find( "Player" ).gameObject;
+    playerPos = player.transform.position;
+    playerRot = player.transform.rotation;
+    // playerTrans = GameObject.Find( "Player" ).gameObject.transform;
+    downCrush = true;
+    // re load the same scene
     SceneManager.LoadScene( SceneManager.GetActiveScene().name );
   }
 

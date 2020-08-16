@@ -49,8 +49,6 @@ public class CrushController : MonoBehaviour
       hexAnimator.SetTrigger( "Crush" );
       crusher.SetCrushable( true );
       isPrimed = false;
-      // hexCollision.enabled = true;
-      // interactable.SetActive( false );
     }
   }
 
@@ -69,6 +67,18 @@ public class CrushController : MonoBehaviour
       isPrimed = true;
       // interactable.SetActive( true );
     }
+  }
+
+  public void Chase()
+  {
+    if ( transform.childCount <= 1 )
+    {
+      GameObject p = Instantiate( pillarPrefab, transform.position, Quaternion.identity );
+      p.transform.parent = gameObject.transform;
+    }
+    
+    hexAnimator.SetTrigger( "Chase" );
+    isPrimed = true;
   }
 
 }

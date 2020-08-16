@@ -12,6 +12,8 @@ public class PlayerStatus : MonoBehaviour
   // private Color colorCurrent;
   public Image damageScreen;
   public GameController gameController;
+  public GameObject ground;
+  public GameObject ceiling;
   public MouseLook mouseLook;
   private bool takingDamage = false;
   private bool dead = false;
@@ -19,13 +21,19 @@ public class PlayerStatus : MonoBehaviour
   public float deathTimer = 1f;
   private float alarm = 0f;
   private GameObject cam;
+  private float camY;
   private Vector3 camSPos;
   public float crushGround;
   private Vector3 camEPos;
   private float sTime;
   private float journey;
-  public float crushSpeed = 4f;
+  public float camTransSpeed = 4f;
   public bool hasKeyCard = false;
+  private bool cameraTransition = false;
+  private bool cameraFallThrough = false;
+  private Vector2 crushDirection = Vector2.zero;
+  public AnimationCurve downCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
+  public AnimationCurve upCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
 
   public void AdjustHealth( float v, bool c )
   {
@@ -34,12 +42,14 @@ public class PlayerStatus : MonoBehaviour
       health += v;
       if ( health <= 0f )
       {
+        // Dead()
         GetComponent<PlayerMovement>().SetMovement( false );
         dead = true;
         alarm = deathTimer;
       }
       else if ( v < 0 )
       {
+        // Damaged()
         takingDamage = true;
         damageScreen.color = colorBlood;
       }
@@ -48,6 +58,36 @@ public class PlayerStatus : MonoBehaviour
     {
       Crushed( c );
     }
+  }
+
+  public void DownCrush()
+  {
+    gameObject.GetComponent<CharacterController>().enabled = false;
+    crushDirection = Vector2.down;
+    camSPos = cam.transform.position;
+    camEPos = SetPos( false, crushDirection, camSPos);
+    SetupTransition( );
+    cameraFallThrough = true;
+  }
+
+  private Vector3 SetPos( bool fallThrough, Vector2 direction, Vector3 camPos )
+  {
+    // if fallthrough, reverse direction
+    float y = 0f;
+
+    direction = fallThrough ? direction * Vector2.down : direction;
+
+    y = direction == Vector2.down ? ground.transform.position.y : y;
+    y = direction == Vector2.up ? ceiling.transform.position.y : y;
+
+    return new Vector3( camPos.x, y, camPos.z );
+  }
+
+  private void SetupTransition()
+  {
+    cameraTransition = true;
+    journey = Vector3.Distance( camSPos, camEPos );
+    sTime = Time.time;
   }
 
   public bool HasKeyCard()
@@ -60,7 +100,7 @@ public class PlayerStatus : MonoBehaviour
     crushed = v;
     if ( crushed )
     {
-      cam = GameObject.Find("PlayerCamera").gameObject;
+      // cam = GameObject.Find("PlayerCamera").gameObject;
       camSPos = cam.transform.position;
       camEPos = new Vector3( camSPos.x, crushGround, camSPos.z );
       journey = Vector3.Distance( camSPos, camEPos );
@@ -70,34 +110,37 @@ public class PlayerStatus : MonoBehaviour
 
   private void Start()
   {
+    cam = GameObject.Find("PlayerCamera").gameObject;
+
     damageScreen.color = colorTransparent;
     // Game Controller is Singleton
     gameController = GameObject.Find("GameController").GetComponent<GameController>();
-
+    camY = cam.transform.position.y;
   }
 
   private void Update( )
   {
-    if ( alarm > 0 )
+    DeathTimer( alarm );
+    TakingDamage( takingDamage, dead );
+    CamTransition( cameraTransition );
+  }
+
+  private void DeathTimer( float a )
+  {
+    if ( a > 0 )
     {
       alarm -= Time.deltaTime;
       if ( alarm <= 0 )
       {
         mouseLook.Unlock();
-
-        if ( crushed )
-        {
-          gameController.Crushed();
-        }
-        else
-        {
-          gameController.IsDead();
-        }
-
+        gameController.IsDead();
       }
-
     }
-    if ( takingDamage )
+  }
+
+  private void TakingDamage( bool dmg, bool dead )
+  {
+    if ( dmg )
     {
       damageScreen.color = Color.Lerp( damageScreen.color, colorTransparent, 5 * Time.deltaTime);
       if ( damageScreen.color.a <= 0.1 )
@@ -115,20 +158,41 @@ public class PlayerStatus : MonoBehaviour
         dead = false;
       }
     }
-    if ( crushed )
+  }
+
+  private void CamTransition( bool v )
+  {
+    if ( v )
     {
-      float distCovered = (Time.time - sTime) * crushSpeed;
+      float distCovered = (Time.time - sTime) * camTransSpeed;
       float fractionOfJourney = distCovered / journey;
       if ( fractionOfJourney >= 1 )
       {
-        // crushed = false;
+        if ( cameraFallThrough )
+        {
+          gameController.ResetHexes();
+          cam.transform.position = SetPos( true, crushDirection, camSPos);
+          camEPos = new Vector3( camSPos.x, camSPos.y, camSPos.z );
+          camSPos = cam.transform.position;
+          SetupTransition();
+          cameraFallThrough = false;
+        }
+        else
+        {
+          gameObject.GetComponent<CharacterController>().enabled = true;
+          cameraTransition = false;
+          return;
+        }
       }
-      else
-      {
-        cam.transform.position = Vector3.Lerp( camSPos, camEPos, fractionOfJourney);
+
+      AnimationCurve c = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
+
+      c = crushDirection == Vector2.up ? upCurve : c;
+      c = crushDirection == Vector2.up ? downCurve : c;
+
+      cam.transform.position = Vector3.Lerp( camSPos, camEPos, c.Evaluate( fractionOfJourney ) );
       }
 
     }
-  }
 
 }
