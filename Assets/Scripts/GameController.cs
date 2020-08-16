@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameController : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class GameController : MonoBehaviour
   public string title;
   public string death;
   public string test;
+  public int level = 1;
+  public GameObject levelText;
 
   private GameObject playerGun;
   // private Transform playerTrans;
@@ -31,34 +35,7 @@ public class GameController : MonoBehaviour
     instance = this;
     DontDestroyOnLoad( gameObject );
     SetMouseVisibility( false );
-
   }
-
-  // private void Update()
-  // {
-  //   // how is this being started!!
-  //   if ( upCrush | downCrush )
-  //   {
-  //     Debug.Log("CRUSH START");
-  //     GameObject player = GameObject.Find( "Player" ).gameObject;
-  //
-  //     player.GetComponent<CharacterController>().enabled = false;
-  //     player.transform.position = new Vector3( playerPos.x, playerPos.y, playerPos.z );
-  //     player.transform.rotation = playerRot;
-  //     // FallThrough();
-  //     enableCC = true;
-  //
-  //     upCrush = false;
-  //     downCrush = false;
-  //   }
-  //
-  //   if ( enableCC )
-  //   {
-  //     GameObject.Find( "Player" ).gameObject.GetComponent<CharacterController>().enabled = true;
-  //     enableCC = false;
-  //   }
-  //
-  // }
 
   public void ResetHexes()
   {
@@ -70,7 +47,6 @@ public class GameController : MonoBehaviour
       h.GetComponent<CrushController>().Chase();
       // h.GetComponent<Target>().Reset();
     }
-
   }
 
   public void StartArena()
@@ -78,6 +54,7 @@ public class GameController : MonoBehaviour
     // enable player movement
     SetPlayerMovement( true );
     SetMouseVisibility( false );
+    // ShowLevelText( true, 0 );
   }
 
   public void StartTitle()
@@ -88,6 +65,21 @@ public class GameController : MonoBehaviour
   public void RestartArena()
   {
     SceneManager.LoadScene( arena );
+  }
+
+  public void ShowLevelText( bool v, int i )
+  {
+    levelText.SetActive( v );
+    Debug.Log( i );
+    level += i;
+    if ( v )
+    {
+      Text t = levelText.GetComponent<Text>();
+      if ( t != null )
+      {
+        t.text = "LEVEL " + level;
+      }
+    }
   }
 
   public void Crushed()

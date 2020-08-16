@@ -19,7 +19,9 @@ public class PlayerStatus : MonoBehaviour
   private bool dead = false;
   private bool crushed = false;
   public float deathTimer = 1f;
+  public float textTimer = 2f;
   private float alarm = 0f;
+  private float tAlarm = 0f;
   private GameObject cam;
   private float camY;
   private Vector3 camSPos;
@@ -62,6 +64,7 @@ public class PlayerStatus : MonoBehaviour
 
   public void DownCrush()
   {
+    // tAlarm = textTimer;
     gameObject.GetComponent<CharacterController>().enabled = false;
     crushDirection = Vector2.down;
     camSPos = cam.transform.position;
@@ -111,15 +114,17 @@ public class PlayerStatus : MonoBehaviour
   private void Start()
   {
     cam = GameObject.Find("PlayerCamera").gameObject;
-
     damageScreen.color = colorTransparent;
     // Game Controller is Singleton
     gameController = GameObject.Find("GameController").GetComponent<GameController>();
+    gameController.ShowLevelText( true, 0 );
+    tAlarm = textTimer;
     camY = cam.transform.position.y;
   }
 
   private void Update( )
   {
+    TextTimer( tAlarm );
     DeathTimer( alarm );
     TakingDamage( takingDamage, dead );
     CamTransition( cameraTransition );
@@ -134,6 +139,18 @@ public class PlayerStatus : MonoBehaviour
       {
         mouseLook.Unlock();
         gameController.IsDead();
+      }
+    }
+  }
+
+  private void TextTimer( float a )
+  {
+    if ( a > 0 )
+    {
+      tAlarm -= Time.deltaTime;
+      if ( tAlarm <= 0 )
+      {
+        gameController.ShowLevelText( false, 0 );
       }
     }
   }
@@ -171,6 +188,9 @@ public class PlayerStatus : MonoBehaviour
         if ( cameraFallThrough )
         {
           gameController.ResetHexes();
+          gameController.ShowLevelText( true, (int)crushDirection.y );
+          tAlarm = textTimer;
+
           cam.transform.position = SetPos( true, crushDirection, camSPos);
           camEPos = new Vector3( camSPos.x, camSPos.y, camSPos.z );
           camSPos = cam.transform.position;
