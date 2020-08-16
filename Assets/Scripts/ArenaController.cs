@@ -8,6 +8,7 @@ public class ArenaController : MonoBehaviour
   public GameObject player;
   public Transform center;
   private ArenaMaker arenaMaker;
+  private ArenaMaterials arenaMaterials;
 
   private GameObject wall;
 
@@ -16,19 +17,14 @@ public class ArenaController : MonoBehaviour
   private void Start()
   {
     arenaMaker = GetComponent<ArenaMaker>();
-    arenaMaker.DrawArena();
-    EnterThroughTunnel( resetHex:false );
+    arenaMaterials = GetComponent<ArenaMaterials>();
+    arenaMaker.DrawArena( );
+    ResetMaterials( );
+    EnterThroughTunnel( );
   }
 
-  public void EnterThroughTunnel( bool resetHex )
+  public void EnterThroughTunnel( )
   {
-    // Start Arena in tunnel
-    // Draw Blood On Screen
-    Debug.Log( "tunnel stuff" );
-    if ( resetHex )
-    {
-      ResetArenaHex();
-    }
 
     GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
     wall = walls[ UnityEngine.Random.Range(0, walls.Length ) ];
@@ -39,45 +35,99 @@ public class ArenaController : MonoBehaviour
     t.transform.LookAt( center );
 
     player.GetComponent<CharacterController>().enabled = false;
-    // charController.enabled = false;
     player.transform.position = t.GetComponent<TunnelController>().GetPlayerSpawn();
     player.transform.LookAt( center );
 
-    // charController.enabled = true;
     player.GetComponent<CharacterController>().enabled = true;
-
-    // Debug.Log( player.transform.position );
-
-    // Get 1 Wall, remember it, and Disable it
-    // draw tunnel at that point
-    // Get rotation (60 degrees...)
-    // put player at tunnel start location
   }
 
-  public void EnterThroughRoof()
+  public void ResetMaterials( )
   {
-    // resent cordinates
+    int lvl = GameObject.Find( "GameController" ).GetComponent<GameController>().GetLevel();
+    Debug.Log( "Resetting Materials to index "+ lvl );
+    GameObject[] objs;
 
-  }
 
-  public void ResetArenaHex()
-  {
-    // all Hexes are resent to UP
-    GameObject[] hexes;
-
-    hexes = GameObject.FindGameObjectsWithTag("Hex");
-
-    foreach (GameObject h in hexes)
+    // HEXES
+    objs = GameObject.FindGameObjectsWithTag( "Hex-Mesh" );
+    Material m = arenaMaterials.GetMat( "HEXFACE", lvl );
+    Material n = arenaMaterials.GetMat( "HEXWALL", lvl );
+    foreach (GameObject h in objs)
     {
-      // h.GetComponent<Target>().Reset();
+      Material[] mats = h.GetComponent<Renderer>().materials;
+      mats[0] = n;
+      mats[1] = m;
+      h.GetComponent<Renderer>().materials = mats;
+    }
+
+    // WALLS
+    objs = GameObject.FindGameObjectsWithTag( "Wall-Mesh" );
+    m = arenaMaterials.GetMat( "WALL", lvl );
+    Debug.Log( m );
+    Debug.Log( "Number of Walls: " + objs.Length );
+    foreach (GameObject h in objs)
+    {
+      Material[] mats = h.GetComponent<Renderer>().materials;
+      mats[1] = m;
+      h.GetComponent<Renderer>().materials = mats;
+      // mats[1] = n;
+      // h.GetComponent<MeshRenderer>().materials[0] = m;
+    }
+
+    // GRATE
+    objs = GameObject.FindGameObjectsWithTag( "Ground" );
+    m = arenaMaterials.GetMat( "GRATE", lvl );
+    foreach (GameObject h in objs)
+    {
+      Material[] mats = h.GetComponent<Renderer>().materials;
+      mats[0] = m;
+      h.GetComponent<Renderer>().materials = mats;
+
+      // h.GetComponent<Renderer>().materials[0] = m;
     }
 
   }
 
-  public void DrawEntrance()
+
+  public void ResetHexes( bool v )
   {
-    // make tunnel
+    GameObject[] hexes;
+    hexes = GameObject.FindGameObjectsWithTag("Hex");
+    foreach (GameObject h in hexes)
+    {
+      h.GetComponent<CrushController>().Chase();
+    }
+
+    if ( v )
+    {
+      ResetMaterials();
+    }
   }
+
+  // public void EnterThroughRoof()
+  // {
+  //   // resent cordinates
+  //
+  // }
+
+  // public void ResetArenaHex()
+  // {
+  //   // all Hexes are resent to UP
+  //   GameObject[] hexes;
+  //
+  //   hexes = GameObject.FindGameObjectsWithTag("Hex");
+  //
+  //   foreach (GameObject h in hexes)
+  //   {
+  //     // h.GetComponent<Target>().Reset();
+  //   }
+  //
+  // }
+
+  // public void DrawEntrance()
+  // {
+  //   // make tunnel
+  // }
 
 
 }

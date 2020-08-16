@@ -47,3 +47,5 @@ MonoBehaviour:
   title: TitleScreen
   death: DeathScreen
   test: Test
+  level: 1
+  levelText: {fileID: 0}

@@ -9,6 +9,9 @@ TagManager:
   - Interact
   - Wall
   - Hex
+  - Ground
+  - Hex-Mesh
+  - Wall-Mesh
   layers:
   - Default
   - TransparentFX

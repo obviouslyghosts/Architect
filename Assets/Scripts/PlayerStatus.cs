@@ -12,6 +12,10 @@ public class PlayerStatus : MonoBehaviour
   // private Color colorCurrent;
   public Image damageScreen;
   public GameController gameController;
+  // public GameObject playerCamera;
+  public GameObject fluidPrefab;
+  public GameObject crushPrefab;
+
   public GameObject ground;
   public GameObject ceiling;
   public MouseLook mouseLook;
@@ -64,6 +68,7 @@ public class PlayerStatus : MonoBehaviour
 
   public void DownCrush()
   {
+    Debug.Log("DOWNCRUSHER");
     // tAlarm = textTimer;
     gameObject.GetComponent<CharacterController>().enabled = false;
     crushDirection = Vector2.down;
@@ -71,6 +76,8 @@ public class PlayerStatus : MonoBehaviour
     camEPos = SetPos( false, crushDirection, camSPos);
     SetupTransition( );
     cameraFallThrough = true;
+    Splatter( camSPos );
+
   }
 
   private Vector3 SetPos( bool fallThrough, Vector2 direction, Vector3 camPos )
@@ -177,6 +184,32 @@ public class PlayerStatus : MonoBehaviour
     }
   }
 
+  private void Splatter( Vector3 pos )
+  {
+    if ( crushDirection == Vector2.down )
+    {
+      // Instantiate( fluidPrefab, pos, Quaternion.identity );
+      GameObject fp = Instantiate( fluidPrefab, pos, Quaternion.identity );
+      fp.transform.parent = cam.transform;
+      fp.transform.localPosition += new Vector3( 0, -0.20f, 1.2f);
+      fp.transform.parent = null;
+      Destroy( fp, 1.5f );
+    }
+  }
+
+  private void Crush( Vector3 pos )
+  {
+    GameObject fp = Instantiate( fluidPrefab, pos, Quaternion.identity );
+    fp.transform.parent = cam.transform;
+    fp.transform.localPosition += new Vector3( 0, -0.20f, 1.2f);
+    fp.transform.parent = null;
+    Destroy( fp, 1.5f );
+    // if ( crushDirection == Vector2.down )
+    // {
+    //   // Instantiate( fluidPrefab, pos, Quaternion.identity );
+    // }
+  }
+
   private void CamTransition( bool v )
   {
     if ( v )
@@ -187,14 +220,17 @@ public class PlayerStatus : MonoBehaviour
       {
         if ( cameraFallThrough )
         {
-          gameController.ResetHexes();
+
+          // gameController.ResetHexes();
           gameController.ShowLevelText( true, (int)crushDirection.y );
+          GameObject.Find( "Arena" ).GetComponent< ArenaController >().ResetHexes( true );
           tAlarm = textTimer;
 
           cam.transform.position = SetPos( true, crushDirection, camSPos);
           camEPos = new Vector3( camSPos.x, camSPos.y, camSPos.z );
           camSPos = cam.transform.position;
           SetupTransition();
+          Splatter( camSPos );
           cameraFallThrough = false;
         }
         else

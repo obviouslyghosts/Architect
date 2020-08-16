@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7846484100397431554}
-  - component: {fileID: 7846484100397431555}
   - component: {fileID: 7846484100397431557}
   - component: {fileID: 7846484100397431552}
   - component: {fileID: 7846484100397431556}
@@ -41,23 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7846484100397431555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7846484100397431553}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64dd9c7dd855cb4d9e0eb1170954c85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bobbingSpeed: 0.2
-  bobbingAmount: {x: 0.5, y: 0.5}
-  startPoints: {x: 0, y: 0}
-  charController: {fileID: 7846484100397431552}
-  camTransform: {fileID: 7846484100577781893}
 --- !u!114 &7846484100397431557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,10 +112,15 @@ MonoBehaviour:
   colorDeath: {r: 0, g: 0, b: 0, a: 1}
   damageScreen: {fileID: 0}
   gameController: {fileID: 0}
+  fluidPrefab: {fileID: 8905722729418360244, guid: d20d37e16c1f505449da4f013875b3cf,
+    type: 3}
+  crushPrefab: {fileID: 8905722729418360244, guid: e77a40501bbba6547b04484717725f2d,
+    type: 3}
   ground: {fileID: 0}
   ceiling: {fileID: 0}
   mouseLook: {fileID: 7846484100577781892}
   deathTimer: 0.5
+  textTimer: 2
   crushGround: 0
   camTransSpeed: 4
   hasKeyCard: 0

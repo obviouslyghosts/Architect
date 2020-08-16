@@ -37,17 +37,17 @@ public class GameController : MonoBehaviour
     SetMouseVisibility( false );
   }
 
-  public void ResetHexes()
-  {
-    // move to arena
-    GameObject[] hexes;
-    hexes = GameObject.FindGameObjectsWithTag("Hex");
-    foreach (GameObject h in hexes)
-    {
-      h.GetComponent<CrushController>().Chase();
-      // h.GetComponent<Target>().Reset();
-    }
-  }
+  // public void ResetHexes()
+  // {
+  //   // move to arena
+  //   GameObject[] hexes;
+  //   hexes = GameObject.FindGameObjectsWithTag("Hex");
+  //   foreach (GameObject h in hexes)
+  //   {
+  //     h.GetComponent<CrushController>().Chase();
+  //     // h.GetComponent<Target>().Reset();
+  //   }
+  // }
 
   public void StartArena()
   {
@@ -65,6 +65,11 @@ public class GameController : MonoBehaviour
   public void RestartArena()
   {
     SceneManager.LoadScene( arena );
+  }
+
+  public int GetLevel()
+  {
+    return level;
   }
 
   public void ShowLevelText( bool v, int i )

@@ -76,7 +76,7 @@ public class CrushController : MonoBehaviour
       GameObject p = Instantiate( pillarPrefab, transform.position, Quaternion.identity );
       p.transform.parent = gameObject.transform;
     }
-    
+
     hexAnimator.SetTrigger( "Chase" );
     isPrimed = true;
   }

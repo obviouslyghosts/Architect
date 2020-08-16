@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 272710425834529273}
   m_Layer: 9
   m_Name: HexMesh
-  m_TagString: Untagged
+  m_TagString: Wall-Mesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
