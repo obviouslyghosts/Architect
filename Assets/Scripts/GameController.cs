@@ -37,18 +37,6 @@ public class GameController : MonoBehaviour
     SetMouseVisibility( false );
   }
 
-  // public void ResetHexes()
-  // {
-  //   // move to arena
-  //   GameObject[] hexes;
-  //   hexes = GameObject.FindGameObjectsWithTag("Hex");
-  //   foreach (GameObject h in hexes)
-  //   {
-  //     h.GetComponent<CrushController>().Chase();
-  //     // h.GetComponent<Target>().Reset();
-  //   }
-  // }
-
   public void StartArena()
   {
     // enable player movement
@@ -87,17 +75,17 @@ public class GameController : MonoBehaviour
     }
   }
 
-  public void Crushed()
-  {
-    Debug.Log( "Crushed" );
-    GameObject player = GameObject.Find( "Player" ).gameObject;
-    playerPos = player.transform.position;
-    playerRot = player.transform.rotation;
-    // playerTrans = GameObject.Find( "Player" ).gameObject.transform;
-    downCrush = true;
-    // re load the same scene
-    SceneManager.LoadScene( SceneManager.GetActiveScene().name );
-  }
+  // public void Crushed()
+  // {
+  //   Debug.Log( "Crushed" );
+  //   GameObject player = GameObject.Find( "Player" ).gameObject;
+  //   playerPos = player.transform.position;
+  //   playerRot = player.transform.rotation;
+  //   // playerTrans = GameObject.Find( "Player" ).gameObject.transform;
+  //   downCrush = true;
+  //   // re load the same scene
+  //   SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+  // }
 
   public void IsDead()
   {

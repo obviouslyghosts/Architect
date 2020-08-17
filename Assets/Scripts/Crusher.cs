@@ -42,11 +42,9 @@ public class Crusher : MonoBehaviour
   {
     if ( other.gameObject.tag == "Player" )
     {
-      Debug.Log( "Taking " + damage + " damage." );
-      // other.gameObject.GetComponent<PlayerStatus>().Crushed( true );
       if ( ableToCrush )
       {
-        // other.gameObject.GetComponent<CharacterController>().enabled = false;
+        Debug.Log( "Taking " + damage + " damage." );
         other.gameObject.GetComponent<PlayerStatus>().DownCrush( );
       }
     }

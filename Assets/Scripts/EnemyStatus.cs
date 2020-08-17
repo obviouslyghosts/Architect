@@ -47,6 +47,7 @@ public class EnemyStatus : MonoBehaviour
 
   private void Dead()
   {
+    GameObject.Find( "Arena" ).GetComponent<ArenaController>().DestroyedEnemy( transform.position );
     Destroy( this.gameObject );
   }
 

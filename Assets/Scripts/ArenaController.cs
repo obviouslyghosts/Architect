@@ -9,6 +9,7 @@ public class ArenaController : MonoBehaviour
   public Transform center;
   private ArenaMaker arenaMaker;
   private ArenaMaterials arenaMaterials;
+  private Spawner spawner;
 
   private GameObject wall;
 
@@ -18,9 +19,11 @@ public class ArenaController : MonoBehaviour
   {
     arenaMaker = GetComponent<ArenaMaker>();
     arenaMaterials = GetComponent<ArenaMaterials>();
+    spawner = GetComponent<Spawner>();
     arenaMaker.DrawArena( );
     ResetMaterials( );
     EnterThroughTunnel( );
+    SpawnRoom();
   }
 
   public void EnterThroughTunnel( )
@@ -85,8 +88,8 @@ public class ArenaController : MonoBehaviour
 
       // h.GetComponent<Renderer>().materials[0] = m;
     }
-
   }
+
 
 
   public void ResetHexes( bool v )
@@ -104,30 +107,20 @@ public class ArenaController : MonoBehaviour
     }
   }
 
-  // public void EnterThroughRoof()
-  // {
-  //   // resent cordinates
-  //
-  // }
+  public void DestroyedEnemy( Vector3 p )
+  {
+    spawner.DestroyedEnemy( p );
+  }
 
-  // public void ResetArenaHex()
-  // {
-  //   // all Hexes are resent to UP
-  //   GameObject[] hexes;
-  //
-  //   hexes = GameObject.FindGameObjectsWithTag("Hex");
-  //
-  //   foreach (GameObject h in hexes)
-  //   {
-  //     // h.GetComponent<Target>().Reset();
-  //   }
-  //
-  // }
+  public void SpawnRoom()
+  {
+    spawner.SpawnRoom();
+  }
 
-  // public void DrawEntrance()
-  // {
-  //   // make tunnel
-  // }
+  public void ClearRoom()
+  {
+    spawner.ClearRoom();
+  }
 
 
 }

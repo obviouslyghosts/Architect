@@ -12,6 +12,7 @@ public class PlayerStatus : MonoBehaviour
   // private Color colorCurrent;
   public Image damageScreen;
   public GameController gameController;
+  public ArenaController arenaController;
   // public GameObject playerCamera;
   public GameObject fluidPrefab;
   public GameObject crushPrefab;
@@ -69,6 +70,7 @@ public class PlayerStatus : MonoBehaviour
   public void DownCrush()
   {
     Debug.Log("DOWNCRUSHER");
+
     // tAlarm = textTimer;
     gameObject.GetComponent<CharacterController>().enabled = false;
     crushDirection = Vector2.down;
@@ -103,6 +105,11 @@ public class PlayerStatus : MonoBehaviour
   public bool HasKeyCard()
   {
     return hasKeyCard;
+  }
+
+  public void PickupKeyCard( bool v )
+  {
+    hasKeyCard = v;
   }
 
   public void Crushed( bool v )
@@ -204,10 +211,6 @@ public class PlayerStatus : MonoBehaviour
     fp.transform.localPosition += new Vector3( 0, -0.20f, 1.2f);
     fp.transform.parent = null;
     Destroy( fp, 1.5f );
-    // if ( crushDirection == Vector2.down )
-    // {
-    //   // Instantiate( fluidPrefab, pos, Quaternion.identity );
-    // }
   }
 
   private void CamTransition( bool v )
@@ -220,10 +223,12 @@ public class PlayerStatus : MonoBehaviour
       {
         if ( cameraFallThrough )
         {
-
-          // gameController.ResetHexes();
           gameController.ShowLevelText( true, (int)crushDirection.y );
-          GameObject.Find( "Arena" ).GetComponent< ArenaController >().ResetHexes( true );
+          arenaController.ResetHexes( true );
+          arenaController.ClearRoom();
+          arenaController.SpawnRoom();
+
+          // arenaController
           tAlarm = textTimer;
 
           cam.transform.position = SetPos( true, crushDirection, camSPos);

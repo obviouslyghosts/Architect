@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - Hex-Mesh
   - Wall-Mesh
+  - Enemy
   layers:
   - Default
   - TransparentFX

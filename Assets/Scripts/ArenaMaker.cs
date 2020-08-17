@@ -31,7 +31,7 @@ public class ArenaMaker : MonoBehaviour
       Debug.Log("Radius: " + r);
       x = 0;
       z = r;
-      DrawHex( r, GetCoordinates(x, z) );
+      // DrawHex( r, GetCoordinates(x, z) );
       for ( int i = 0; i < r; i++ )
       {
         x = x + 1;
@@ -74,7 +74,7 @@ public class ArenaMaker : MonoBehaviour
 
   private void DrawHex( int r, Vector3 pos )
   {
-    if ( r == 0 ) { return; }
+    if ( r == 0 ) { return; } // no center
     if ( r < radius - 1 )
     {
       GameObject hex = Instantiate( hexagonPrefab, pos, Quaternion.identity );
