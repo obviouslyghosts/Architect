@@ -56,7 +56,7 @@ Animator:
   m_GameObject: {fileID: 1081055246956054481}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 93204598b2124b745bd08471afd57448, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5107a22396b706b4aba9533baf3525fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 5320287453247849697}
   - component: {fileID: 331956012983381007}
   m_Layer: 0
-  m_Name: AnimatedHex
-  m_TagString: Hex
+  m_Name: AnimatedWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3ab727d146b6735409bae9f825b07dff,
         type: 3}
       propertyPath: m_TagString
-      value: Hex-Mesh
+      value: Wall-Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab727d146b6735409bae9f825b07dff, type: 3}
@@ -298,6 +298,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pillar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479163251578525709, guid: 30b38abdfa7571f4a8896bc8a92e658a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b38abdfa7571f4a8896bc8a92e658a, type: 3}

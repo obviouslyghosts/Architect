@@ -112,6 +112,7 @@ MonoBehaviour:
   colorDeath: {r: 0, g: 0, b: 0, a: 1}
   damageScreen: {fileID: 0}
   gameController: {fileID: 0}
+  arenaController: {fileID: 0}
   fluidPrefab: {fileID: 8905722729418360244, guid: d20d37e16c1f505449da4f013875b3cf,
     type: 3}
   crushPrefab: {fileID: 8905722729418360244, guid: e77a40501bbba6547b04484717725f2d,

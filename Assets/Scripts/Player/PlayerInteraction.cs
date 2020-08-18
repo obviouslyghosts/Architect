@@ -55,13 +55,15 @@ public class PlayerInteraction : MonoBehaviour
         alarm = startTimer;
         timerAction = "Start";
         break;
+
       case "Door":
         bool qualifications = GameObject.Find( "Player" ).GetComponent<PlayerStatus>().HasKeyCard();
-        interactingObj.transform.parent.gameObject.GetComponent<GateController>().OpenGate( qualifications );
+        interactingObj.GetComponent<GateController>().Interact( qualifications );
         if ( qualifications )
         {
           ManualTriggerReset();
         }
+        // interactingObj.transform.parent.gameObject.GetComponent<GateController>().OpenGate( qualifications );
         break;
       case "CrushToggle":
         GameObject.Find( "AnimatedHex" ).GetComponent<CrushController>().Trigger( );

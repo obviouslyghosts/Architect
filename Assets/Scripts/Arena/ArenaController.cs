@@ -71,7 +71,7 @@ public class ArenaController : MonoBehaviour
     foreach (GameObject h in objs)
     {
       Material[] mats = h.GetComponent<Renderer>().materials;
-      mats[1] = m;
+      mats[0] = m;
       h.GetComponent<Renderer>().materials = mats;
       // mats[1] = n;
       // h.GetComponent<MeshRenderer>().materials[0] = m;

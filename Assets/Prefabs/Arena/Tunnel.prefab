@@ -949,7 +949,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d91715e0be4b11b49aef45d656271271, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e0c6362a7a7a4141bd747a3cf1db033, type: 2}
     - target: {fileID: 919132149155446097, guid: 1583949f7ca59704996e9809b634df78,
         type: 3}
       propertyPath: m_Name
@@ -1293,7 +1293,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d91715e0be4b11b49aef45d656271271, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e0c6362a7a7a4141bd747a3cf1db033, type: 2}
     - target: {fileID: 919132149155446097, guid: 51320432838ad2948b940327efe6ed2f,
         type: 3}
       propertyPath: m_Name
@@ -1837,9 +1837,10 @@ PrefabInstance:
     - target: {fileID: 7815647066046222419, guid: 817715a0472dedf49b53567292253448,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5967250270573206872, guid: 817715a0472dedf49b53567292253448, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 817715a0472dedf49b53567292253448, type: 3}
 --- !u!4 &7588786368627749858 stripped
 Transform:
@@ -2257,11 +2258,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d91715e0be4b11b49aef45d656271271, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e0c6362a7a7a4141bd747a3cf1db033, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b7d40bdf5eaa05418c6d51169662866,
         type: 3}
       propertyPath: m_Name
       value: UpCrush-Floor-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b7d40bdf5eaa05418c6d51169662866,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b7d40bdf5eaa05418c6d51169662866, type: 3}
@@ -2343,11 +2349,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d91715e0be4b11b49aef45d656271271, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e0c6362a7a7a4141bd747a3cf1db033, type: 2}
     - target: {fileID: 919132149155446097, guid: 506cd0473ce98df43bcdcb4819784635,
         type: 3}
       propertyPath: m_Name
       value: Extended-Floor-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 506cd0473ce98df43bcdcb4819784635,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 506cd0473ce98df43bcdcb4819784635, type: 3}
@@ -2601,11 +2612,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d91715e0be4b11b49aef45d656271271, type: 2}
+      objectReference: {fileID: 2100000, guid: 6e0c6362a7a7a4141bd747a3cf1db033, type: 2}
     - target: {fileID: 919132149155446097, guid: ca2067b214d2164498c3d9158094fff5,
         type: 3}
       propertyPath: m_Name
       value: Gate-Floor-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca2067b214d2164498c3d9158094fff5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca2067b214d2164498c3d9158094fff5, type: 3}

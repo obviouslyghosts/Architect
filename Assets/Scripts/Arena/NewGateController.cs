@@ -2,24 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateController : MonoBehaviour
+public class NewGateController : MonoBehaviour
 {
-
+  // private PlayerStatus playerStatus;
   public Animator gateAnimator;
   public MeshCollider gateCollision;
   public GameObject interactable;
+  private bool isOpen = true;
 
-  private bool isOpen = false;
 
-  public void OpenGate( bool v )
+  private void Interact( bool v )
   {
-    if ( !isOpen && v )
+    if ( !isOpen & v )
     {
-      isOpen = true;
-      gateCollision.enabled = false;
-      gateAnimator.SetTrigger( "Open" );
-      interactable.SetActive( false );
+      OpenGate();
     }
+
+  }
+
+  public void OpenGate( )
+  {
+    isOpen = true;
+    gateCollision.enabled = false;
+    gateAnimator.SetTrigger( "Open" );
+    interactable.SetActive( false );
   }
 
   public void CloseGate( bool v )
@@ -32,4 +38,6 @@ public class GateController : MonoBehaviour
       interactable.SetActive( true );
     }
   }
+
+
 }
