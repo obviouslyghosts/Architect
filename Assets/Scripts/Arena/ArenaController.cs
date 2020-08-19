@@ -12,6 +12,7 @@ public class ArenaController : MonoBehaviour
   private Spawner spawner;
 
   private GameObject wall;
+  private GameObject tunnel;
 
 
 
@@ -20,28 +21,39 @@ public class ArenaController : MonoBehaviour
     arenaMaker = GetComponent<ArenaMaker>();
     arenaMaterials = GetComponent<ArenaMaterials>();
     spawner = GetComponent<Spawner>();
-    arenaMaker.DrawArena( );
-    ResetMaterials( );
-    EnterThroughTunnel( );
+    arenaMaker.DrawArena();
+    ResetMaterials();
+    OpenRandomWall();
+    EnterThroughTunnel();
     SpawnRoom();
   }
 
   public void EnterThroughTunnel( )
   {
-
-    GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
-    wall = walls[ UnityEngine.Random.Range(0, walls.Length ) ];
-    wall.transform.SetParent( null );
-    Vector3 pos = wall.transform.position;
-    wall.SetActive( false );
-    GameObject t = Instantiate( tunnelPrefab, pos, Quaternion.identity );
-    t.transform.LookAt( center );
-
     player.GetComponent<CharacterController>().enabled = false;
-    player.transform.position = t.GetComponent<TunnelController>().GetPlayerSpawn();
+    player.transform.position = tunnel.GetComponent<TunnelController>().GetPlayerSpawn();
     player.transform.LookAt( center );
 
     player.GetComponent<CharacterController>().enabled = true;
+  }
+
+  public void LeavingTunnel( bool v )
+  {
+    if ( v )
+    {
+      wall.GetComponent<WallController>().Crush( true );
+      Destroy( tunnel, 1f );
+    }
+  }
+
+  public void OpenRandomWall()
+  {
+    GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+    wall = walls[ UnityEngine.Random.Range(0, walls.Length ) ];
+    Vector3 pos = wall.transform.position;
+    wall.GetComponent<WallController>().Prime( true );
+    tunnel = Instantiate( tunnelPrefab, pos, Quaternion.identity );
+    tunnel.transform.LookAt( center );
   }
 
   public void ResetMaterials( )

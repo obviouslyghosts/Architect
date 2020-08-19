@@ -41,6 +41,7 @@ public class PlayerStatus : MonoBehaviour
   private Vector2 crushDirection = Vector2.zero;
   public AnimationCurve downCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
   public AnimationCurve upCurve = AnimationCurve.Linear(0.0f, 0.0f, 1.0f, 1.0f);
+  private bool inTunnel = false;
 
   public void AdjustHealth( float v, bool c )
   {
@@ -65,6 +66,16 @@ public class PlayerStatus : MonoBehaviour
     {
       Crushed( c );
     }
+  }
+
+  public void InTunnel( bool v )
+  {
+    inTunnel = v;
+  }
+
+  public bool TunnelCheck()
+  {
+    return inTunnel | hasKeyCard;
   }
 
   public void DownCrush()
@@ -109,6 +120,7 @@ public class PlayerStatus : MonoBehaviour
 
   public void PickupKeyCard( bool v )
   {
+    arenaController.OpenRandomWall();
     hasKeyCard = v;
   }
 

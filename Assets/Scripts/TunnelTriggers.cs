@@ -6,22 +6,24 @@ public class TunnelTriggers : MonoBehaviour
 {
 
   // public GameObject groundFolder;
-  public GameObject tower;
+  // public GameObject tower;
+  private GameController gameController;
   private Renderer ground;
   private Renderer ceiling;
   public bool isTunnelExit;
 
-  private bool isShowingTower;
+  // private bool isShowingTower;
 
   private void Start()
   {
+    gameController = GameObject.Find( "GameController" ).GetComponent<GameController>();
     ground = GameObject.Find( "Ground" ).GetComponent<Renderer>();
     ceiling = GameObject.Find( "Ceiling" ).GetComponent<Renderer>();
 
-    tower = GameObject.Find( "Tower" );
+    // tower = GameObject.Find( "Tower" );
 
-    ground.enabled = false;
-    ceiling.enabled = false;
+    ground.enabled = !gameController.IsShowingTower();
+    ceiling.enabled = !gameController.IsShowingTower();
   }
 
 
@@ -29,55 +31,26 @@ public class TunnelTriggers : MonoBehaviour
   {
     if ( other.gameObject.tag == "Player" )
     {
-      if ( isTunnelExit )
-      {
-        // just entered the arena
-        ground.enabled = true;
-        ceiling.enabled = true;
-
-        tower.SetActive( false );
-        isShowingTower = false;
-
-
-      }
-      else
-      {
-        // just entered the tunnel
-        ground.enabled = false;
-        ceiling.enabled = false;
-
-        tower.SetActive( true );
-        isShowingTower = true;
-      }
-
+      UpdateVisibility( !isTunnelExit );
     }
   }
+
 
   private void OnTriggerExit(Collider other)
   {
     if ( other.gameObject.tag == "Player" )
     {
-      if ( isTunnelExit && isShowingTower )
-      {
-        ground.enabled = true;
-        ceiling.enabled = true;
-
-        tower.SetActive( false );
-        isShowingTower = false;
-
-      }
-      else if ( !isTunnelExit && !isShowingTower )
-      {
-
-        ground.enabled = false;
-        ceiling.enabled = false;
-
-        tower.SetActive( true );
-        isShowingTower = true;
-
-      }
-
+      UpdateVisibility( !isTunnelExit );
     }
+  }
+
+  private void UpdateVisibility( bool s )
+  {
+    gameController.ShowTower( s );
+    ground.enabled = !s;
+    ceiling.enabled = !s;
+
+    // tower.SetActive( s );
   }
 
 }

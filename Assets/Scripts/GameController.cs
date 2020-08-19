@@ -15,14 +15,17 @@ public class GameController : MonoBehaviour
   public string test;
   public int level = 1;
   public GameObject levelText;
-
   private GameObject playerGun;
+  public GameObject tower;
   // private Transform playerTrans;
   private Vector3 playerPos;
   private Quaternion playerRot;
   private bool upCrush = false;
   private bool downCrush = false;
   private bool enableCC = false;
+
+  public bool isShowingTower = true;
+
 
   private void Awake()
   {
@@ -35,7 +38,9 @@ public class GameController : MonoBehaviour
     instance = this;
     DontDestroyOnLoad( gameObject );
     SetMouseVisibility( false );
+    tower = GameObject.Find( "Tower" ).gameObject;
   }
+
 
   public void StartArena()
   {
@@ -43,6 +48,17 @@ public class GameController : MonoBehaviour
     SetPlayerMovement( true );
     SetMouseVisibility( false );
     // ShowLevelText( true, 0 );
+  }
+
+  public bool IsShowingTower()
+  {
+    return isShowingTower;
+  }
+
+  public void ShowTower( bool v )
+  {
+    tower.SetActive( v );
+    isShowingTower = v;
   }
 
   public void StartTitle()
@@ -74,18 +90,6 @@ public class GameController : MonoBehaviour
       }
     }
   }
-
-  // public void Crushed()
-  // {
-  //   Debug.Log( "Crushed" );
-  //   GameObject player = GameObject.Find( "Player" ).gameObject;
-  //   playerPos = player.transform.position;
-  //   playerRot = player.transform.rotation;
-  //   // playerTrans = GameObject.Find( "Player" ).gameObject.transform;
-  //   downCrush = true;
-  //   // re load the same scene
-  //   SceneManager.LoadScene( SceneManager.GetActiveScene().name );
-  // }
 
   public void IsDead()
   {
