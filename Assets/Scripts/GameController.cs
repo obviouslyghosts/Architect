@@ -38,7 +38,10 @@ public class GameController : MonoBehaviour
     instance = this;
     DontDestroyOnLoad( gameObject );
     SetMouseVisibility( false );
-    tower = GameObject.Find( "Tower" ).gameObject;
+    if ( GameObject.Find( "Tower") != null )
+    {
+      tower = GameObject.Find( "Tower" ).gameObject;
+    }
   }
 
 

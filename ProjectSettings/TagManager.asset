@@ -13,6 +13,8 @@ TagManager:
   - Hex-Mesh
   - Wall-Mesh
   - Enemy
+  - UpCrusher
+  - UpCrush-Mesh
   layers:
   - Default
   - TransparentFX

@@ -117,6 +117,8 @@ MonoBehaviour:
     type: 3}
   crushPrefab: {fileID: 8905722729418360244, guid: e77a40501bbba6547b04484717725f2d,
     type: 3}
+  upCrushPrefab: {fileID: 8905722729418360244, guid: 75b4f77020863864386788d18c66f02d,
+    type: 3}
   ground: {fileID: 0}
   ceiling: {fileID: 0}
   mouseLook: {fileID: 7846484100577781892}

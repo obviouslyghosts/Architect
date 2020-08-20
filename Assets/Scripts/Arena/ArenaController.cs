@@ -113,6 +113,13 @@ public class ArenaController : MonoBehaviour
       h.GetComponent<CrushController>().Chase();
     }
 
+    // GameObject[] hexes;
+    // hexes = GameObject.FindGameObjectsWithTag("UpCrusher");
+    // foreach (GameObject h in hexes)
+    // {
+    //   h.GetComponent<UpCrusherController>().Chase();
+    // }
+
     if ( v )
     {
       ResetMaterials();

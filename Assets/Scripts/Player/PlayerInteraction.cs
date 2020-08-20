@@ -68,6 +68,9 @@ public class PlayerInteraction : MonoBehaviour
       case "CrushToggle":
         GameObject.Find( "AnimatedHex" ).GetComponent<CrushController>().Trigger( );
         break;
+      case "UpCrush":
+        GameObject.Find( "UpCrusher" ).GetComponent<UpCrusherController>().Trigger( );
+        break;
       default:
         break;
     }

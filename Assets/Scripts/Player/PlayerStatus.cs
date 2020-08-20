@@ -16,6 +16,8 @@ public class PlayerStatus : MonoBehaviour
   // public GameObject playerCamera;
   public GameObject fluidPrefab;
   public GameObject crushPrefab;
+  public GameObject upCrushPrefab;
+  
 
   public GameObject ground;
   public GameObject ceiling;
@@ -81,16 +83,39 @@ public class PlayerStatus : MonoBehaviour
   public void DownCrush()
   {
     Debug.Log("DOWNCRUSHER");
+    Crush( Vector2.down );
+    // gameObject.GetComponent<CharacterController>().enabled = false;
+    // crushDirection = Vector2.down;
+    // camSPos = cam.transform.position;
+    // camEPos = SetPos( false, crushDirection, camSPos);
+    // SetupTransition( );
+    // cameraFallThrough = true;
+    // Splatter( camSPos );
+  }
 
-    // tAlarm = textTimer;
+  public void UpCrush()
+  {
+    Debug.Log("UPCRUSHER");
+    Crush( Vector2.up );
+
+    // gameObject.GetComponent<CharacterController>().enabled = false;
+    // crushDirection = Vector2.up;
+    // camSPos = cam.transform.position;
+    // camEPos = SetPos( false, crushDirection, camSPos);
+    // SetupTransition( );
+    // cameraFallThrough = true;
+    // Splatter( camSPos );
+  }
+
+  private void Crush( Vector2 d)
+  {
     gameObject.GetComponent<CharacterController>().enabled = false;
-    crushDirection = Vector2.down;
+    crushDirection = d;
     camSPos = cam.transform.position;
     camEPos = SetPos( false, crushDirection, camSPos);
     SetupTransition( );
     cameraFallThrough = true;
     Splatter( camSPos );
-
   }
 
   private Vector3 SetPos( bool fallThrough, Vector2 direction, Vector3 camPos )
@@ -209,6 +234,14 @@ public class PlayerStatus : MonoBehaviour
     {
       // Instantiate( fluidPrefab, pos, Quaternion.identity );
       GameObject fp = Instantiate( fluidPrefab, pos, Quaternion.identity );
+      fp.transform.parent = cam.transform;
+      fp.transform.localPosition += new Vector3( 0, -0.20f, 1.2f);
+      fp.transform.parent = null;
+      Destroy( fp, 1.5f );
+    }
+    else
+    {
+      GameObject fp = Instantiate( upCrushPrefab, pos, Quaternion.identity );
       fp.transform.parent = cam.transform;
       fp.transform.localPosition += new Vector3( 0, -0.20f, 1.2f);
       fp.transform.parent = null;
