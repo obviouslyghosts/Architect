@@ -13,7 +13,7 @@ public class ArenaController : MonoBehaviour
 
   private GameObject wall;
   private GameObject tunnel;
-
+  private Light roomLight;
 
 
   private void Start()
@@ -22,6 +22,7 @@ public class ArenaController : MonoBehaviour
     arenaMaterials = GetComponent<ArenaMaterials>();
     spawner = GetComponent<Spawner>();
     arenaMaker.DrawArena();
+    roomLight = GameObject.Find( "RoomLight" ).GetComponent<Light>();
     ResetMaterials();
     OpenRandomWall();
     EnterThroughTunnel();
@@ -48,10 +49,17 @@ public class ArenaController : MonoBehaviour
 
   public void OpenRandomWall()
   {
+    if ( tunnel != null )
+    {
+      wall.GetComponent<WallController>().Crush( true );
+      Destroy( tunnel, 1f );
+    }
+
     GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
     wall = walls[ UnityEngine.Random.Range(0, walls.Length ) ];
     Vector3 pos = wall.transform.position;
     wall.GetComponent<WallController>().Prime( true );
+
     tunnel = Instantiate( tunnelPrefab, pos, Quaternion.identity );
     tunnel.transform.LookAt( center );
   }
@@ -100,6 +108,8 @@ public class ArenaController : MonoBehaviour
 
       // h.GetComponent<Renderer>().materials[0] = m;
     }
+
+    roomLight.color = arenaMaterials.GetColor( "ROOM", lvl );
   }
 
 

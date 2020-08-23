@@ -1064,6 +1064,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 43c214cc90a2d684a988280bcbd8d21a, type: 2}
   - {fileID: 2100000, guid: 77e7109961987d74cb806baa265339dc, type: 2}
   - {fileID: 2100000, guid: e079e63afacc7a84aa7a0ff5ae35d70f, type: 2}
+  roomLights:
+  - {r: 0, g: 1, b: 0.757931, a: 0}
+  - {r: 1, g: 0.9094449, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0.72794294, a: 0}
+  - {r: 0.13181043, g: 1, b: 0, a: 0}
+  - {r: 0.15265131, g: 0, b: 1, a: 0}
 --- !u!1 &1440376787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,7 +1282,7 @@ GameObject:
   - component: {fileID: 1815068484}
   - component: {fileID: 1815068483}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: RoomLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
