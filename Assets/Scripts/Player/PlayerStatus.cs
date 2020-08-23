@@ -17,7 +17,7 @@ public class PlayerStatus : MonoBehaviour
   public GameObject fluidPrefab;
   public GameObject crushPrefab;
   public GameObject upCrushPrefab;
-  
+
 
   public GameObject ground;
   public GameObject ceiling;
@@ -167,8 +167,8 @@ public class PlayerStatus : MonoBehaviour
     cam = GameObject.Find("PlayerCamera").gameObject;
     damageScreen.color = colorTransparent;
     // Game Controller is Singleton
-    gameController = GameObject.Find("GameController").GetComponent<GameController>();
-    gameController.ShowLevelText( true, 0 );
+    gameController = GameObject.Find( "GameController" ).GetComponent<GameController>();
+    // gameController.ShowLevelText( true, 0 );
     tAlarm = textTimer;
     camY = cam.transform.position.y;
   }

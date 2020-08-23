@@ -71,7 +71,7 @@ public class ArenaController : MonoBehaviour
     {
       Material[] mats = h.GetComponent<Renderer>().materials;
       mats[0] = n;
-      mats[1] = m;
+      // mats[1] = m;
       h.GetComponent<Renderer>().materials = mats;
     }
 

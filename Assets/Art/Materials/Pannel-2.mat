@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Pannel-2
-  m_Shader: {fileID: 4800000, guid: c80e5406641301d439032d91886e876c, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6bd91718b78b7f24ca1722dfc75b3d76, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

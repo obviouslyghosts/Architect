@@ -43,6 +43,6 @@ public class MouseLook : MonoBehaviour
 
   public void LockState( bool v )
   {
-    Cursor.lockState = ( v ) ? CursorLockMode.None : CursorLockMode.Locked;
+    Cursor.lockState = v ? CursorLockMode.None : CursorLockMode.Locked;
   }
 }

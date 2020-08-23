@@ -11,15 +11,20 @@ public class Scenes : MonoBehaviour
     gameController = GameObject.Find( "GameController" ).GetComponent<GameController>();
   }
 
+  public void TitleScreenMovement()
+  {
+    gameController.LetPlayerMove();
+  }
+
   public void StartArena()
   {
     gameController.StartArena();
   }
 
-  public void Restart()
-  {
-    gameController.RestartArena();
-  }
+  // public void Restart()
+  // {
+  //   gameController.RestartArena();
+  // }
 
   public void StartTitle()
   {

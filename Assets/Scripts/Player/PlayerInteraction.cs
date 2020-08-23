@@ -82,7 +82,7 @@ public class PlayerInteraction : MonoBehaviour
     {
       case "Start":
         // Destroy( interactingObj.transform.parent.gameObject );
-        GameObject.Find( "GameController" ).GetComponent<GameController>().RestartArena( );
+        GameObject.Find( "GameController" ).GetComponent<GameController>().StartArena( );
         break;
       default:
         break;

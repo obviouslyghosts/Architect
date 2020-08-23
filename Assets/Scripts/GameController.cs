@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
   public GameObject levelText;
   private GameObject playerGun;
   public GameObject tower;
+  private string sceneName;
   // private Transform playerTrans;
   private Vector3 playerPos;
   private Quaternion playerRot;
@@ -36,21 +37,47 @@ public class GameController : MonoBehaviour
       return;
     }
     instance = this;
+    sceneName = SceneManager.GetActiveScene().name;
     DontDestroyOnLoad( gameObject );
     SetMouseVisibility( false );
-    if ( GameObject.Find( "Tower") != null )
+    // CustomLoad();
+  }
+
+  public void CustomLoad( string s )
+  {
+    // string s = SceneManager.GetActiveScene().name;
+    sceneName = ( sceneName != s ) ? s : sceneName;
+
+    if ( sceneName == title )
     {
+      SetPlayerMovement( false );
+      SetPlayerWeapon( false );
+      SetMouseVisibility( true );
+    }
+
+    if ( sceneName == arena )
+    {
+      levelText = GameObject.Find( "LevelText" ).gameObject;
       tower = GameObject.Find( "Tower" ).gameObject;
     }
+
+    if ( sceneName == death )
+    {
+
+    }
+    if ( sceneName == test )
+    {
+
+    }
+
   }
 
 
-  public void StartArena()
+  public void LetPlayerMove()
   {
     // enable player movement
     SetPlayerMovement( true );
     SetMouseVisibility( false );
-    // ShowLevelText( true, 0 );
   }
 
   public bool IsShowingTower()
@@ -60,8 +87,15 @@ public class GameController : MonoBehaviour
 
   public void ShowTower( bool v )
   {
-    tower.SetActive( v );
-    isShowingTower = v;
+    if ( tower == null )
+    {
+      tower = GameObject.Find( "Tower" ).gameObject;
+    }
+    if ( tower != null )
+    {
+      tower.SetActive( v );
+      isShowingTower = v;
+    }
   }
 
   public void StartTitle()
@@ -69,9 +103,11 @@ public class GameController : MonoBehaviour
     SceneManager.LoadScene( title );
   }
 
-  public void RestartArena()
+  public void StartArena()
   {
     SceneManager.LoadScene( arena );
+    // scene = SceneManager.GetActiveScene();
+
   }
 
   public int GetLevel()
@@ -81,15 +117,19 @@ public class GameController : MonoBehaviour
 
   public void ShowLevelText( bool v, int i )
   {
-    levelText.SetActive( v );
-    Debug.Log( i );
-    level += i;
-    if ( v )
+    // check scene
+    if ( SceneManager.GetActiveScene().name == arena )
     {
-      Text t = levelText.GetComponent<Text>();
-      if ( t != null )
+      levelText.SetActive( v );
+      Debug.Log( i );
+      level += i;
+      if ( v )
       {
-        t.text = "LEVEL " + level;
+        Text t = levelText.GetComponent<Text>();
+        if ( t != null )
+        {
+          t.text = "LEVEL " + level;
+        }
       }
     }
   }
