@@ -18,13 +18,9 @@ public class Scenes : MonoBehaviour
 
   public void StartArena()
   {
+    gameController.SetLevel( 1 );
     gameController.StartArena();
   }
-
-  // public void Restart()
-  // {
-  //   gameController.RestartArena();
-  // }
 
   public void StartTitle()
   {

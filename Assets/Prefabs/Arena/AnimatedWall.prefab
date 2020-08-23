@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ec432841344da43a3f1755725e7205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInsideTunnel: 0
 --- !u!54 &7226903903694972422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -87,7 +88,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -4575734979276873811, guid: 3ab727d146b6735409bae9f825b07dff, type: 3}
+  m_Mesh: {fileID: 2190622540023885545, guid: 3ab727d146b6735409bae9f825b07dff, type: 3}
 --- !u!208 &2421145826667950856
 NavMeshObstacle:
   m_ObjectHideFlags: 0

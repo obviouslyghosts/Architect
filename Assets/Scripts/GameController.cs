@@ -24,7 +24,8 @@ public class GameController : MonoBehaviour
   private bool upCrush = false;
   private bool downCrush = false;
   private bool enableCC = false;
-
+  // private Renderer ground;
+  // private Renderer ceiling;
   public bool isShowingTower = true;
 
 
@@ -39,7 +40,7 @@ public class GameController : MonoBehaviour
     instance = this;
     sceneName = SceneManager.GetActiveScene().name;
     DontDestroyOnLoad( gameObject );
-    SetMouseVisibility( false );
+    // SetMouseVisibility( false );
     // CustomLoad();
   }
 
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
 
     if ( sceneName == title )
     {
+      level = 1;
       SetPlayerMovement( false );
       SetPlayerWeapon( false );
       SetMouseVisibility( true );
@@ -57,8 +59,11 @@ public class GameController : MonoBehaviour
 
     if ( sceneName == arena )
     {
+      SetMouseVisibility( false );
       levelText = GameObject.Find( "LevelText" ).gameObject;
       tower = GameObject.Find( "Tower" ).gameObject;
+      GameObject.Find( "Ground" ).GetComponent<Renderer>().enabled = false;
+      GameObject.Find( "Ceiling" ).GetComponent<Renderer>().enabled = false;
     }
 
     if ( sceneName == death )
@@ -113,6 +118,11 @@ public class GameController : MonoBehaviour
   public int GetLevel()
   {
     return level;
+  }
+
+  public void SetLevel( int i )
+  {
+    level = i;
   }
 
   public void ShowLevelText( bool v, int i )

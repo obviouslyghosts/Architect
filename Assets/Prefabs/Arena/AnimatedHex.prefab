@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ableToCrush: 0
   flatDamage: 1000
-  dangerTimer: 0.6
+  dangerTimer: 0.7
   multiplier: 100
 --- !u!1 &7427361467865936355
 GameObject:

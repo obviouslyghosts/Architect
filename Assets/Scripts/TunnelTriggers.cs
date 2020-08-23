@@ -22,8 +22,8 @@ public class TunnelTriggers : MonoBehaviour
 
     // tower = GameObject.Find( "Tower" );
 
-    ground.enabled = !gameController.IsShowingTower();
-    ceiling.enabled = !gameController.IsShowingTower();
+    // ground.enabled = !gameController.IsShowingTower();
+    // ceiling.enabled = !gameController.IsShowingTower();
   }
 
 

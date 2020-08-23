@@ -22,7 +22,7 @@ public class EnemyAnim : MonoBehaviour
 
     lastPos = gameObject.transform.position;
     anim.SetFloat("Speed", s);
-    Debug.Log( s );
+    // Debug.Log( s );
   }
 
   public void SetAttack( bool v )

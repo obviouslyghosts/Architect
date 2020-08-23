@@ -84,27 +84,12 @@ public class PlayerStatus : MonoBehaviour
   {
     Debug.Log("DOWNCRUSHER");
     Crush( Vector2.down );
-    // gameObject.GetComponent<CharacterController>().enabled = false;
-    // crushDirection = Vector2.down;
-    // camSPos = cam.transform.position;
-    // camEPos = SetPos( false, crushDirection, camSPos);
-    // SetupTransition( );
-    // cameraFallThrough = true;
-    // Splatter( camSPos );
   }
 
   public void UpCrush()
   {
     Debug.Log("UPCRUSHER");
     Crush( Vector2.up );
-
-    // gameObject.GetComponent<CharacterController>().enabled = false;
-    // crushDirection = Vector2.up;
-    // camSPos = cam.transform.position;
-    // camEPos = SetPos( false, crushDirection, camSPos);
-    // SetupTransition( );
-    // cameraFallThrough = true;
-    // Splatter( camSPos );
   }
 
   private void Crush( Vector2 d)
@@ -188,6 +173,8 @@ public class PlayerStatus : MonoBehaviour
       alarm -= Time.deltaTime;
       if ( alarm <= 0 )
       {
+        arenaController.ResetHexes( true );
+        arenaController.ClearRoom();
         mouseLook.Unlock();
         gameController.IsDead();
       }

@@ -38,7 +38,7 @@ public class Crusher : MonoBehaviour
     }
   }
 
-  private void OnCollisionStay( Collision other )
+  private void OnCollisionEnter( Collision other )
   {
     if ( other.gameObject.tag == "Player" )
     {
@@ -48,6 +48,12 @@ public class Crusher : MonoBehaviour
         other.gameObject.GetComponent<PlayerStatus>().DownCrush( );
       }
     }
+    else if ( other.gameObject.tag == "Enemy" )
+    {
+      Debug.Log( "ENEMY CRUShED" );
+      other.gameObject.GetComponent<EnemyStatus>().AdjustHealth( -flatDamage );
+    }
+
   }
 
   // private void OnTriggerStay( Collider other )
