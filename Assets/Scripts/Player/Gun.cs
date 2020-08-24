@@ -13,6 +13,8 @@ public class Gun : MonoBehaviour
 
   public Camera fpsCam;
   public ParticleSystem muzzleFlash;
+  public GameObject fxShootPrefab;
+  public Transform shootPos;
   public GameObject impactEffect;
   public LayerMask ignoreLayer;
 
@@ -31,7 +33,10 @@ public class Gun : MonoBehaviour
 
   void Shoot()
   {
-    muzzleFlash.Play();
+    GameObject fxShoot = Instantiate( fxShootPrefab, shootPos.position, shootPos.rotation * Quaternion.Euler(0f, 0f, Random.Range(0f, 90f) ) ) ; //Quaternion.Euler(0f, 0f, Random.Range(0f, 90f) ) );
+    fxShoot.transform.parent = gameObject.transform;
+    Destroy( fxShoot, 1f );
+    // muzzleFlash.Play();
     gunAnim.Shoot( true );
 
     RaycastHit hit;

@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - UpCrusher
   - UpCrush-Mesh
+  - Tunnel-Mesh
   layers:
   - Default
   - TransparentFX

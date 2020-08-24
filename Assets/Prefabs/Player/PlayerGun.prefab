@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4421470568247246912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680089689176708021}
+  m_Layer: 0
+  m_Name: ShootFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1680089689176708021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421470568247246912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.044, y: -0.010000274, z: 1.2249999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7831473705602008868}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &6674587440437352502
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -157,6 +187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7720368962442342599}
+  - {fileID: 1680089689176708021}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,6 +210,9 @@ MonoBehaviour:
   gunAnim: {fileID: 0}
   fpsCam: {fileID: 0}
   muzzleFlash: {fileID: 7831473706695308297}
+  fxShootPrefab: {fileID: 5892277269562824628, guid: ebd0f430a0dd79c4986a59434ebb7336,
+    type: 3}
+  shootPos: {fileID: 1680089689176708021}
   impactEffect: {fileID: 1321485899337236021, guid: ff3b1fc66ab5e0a4c9f0941c2e6d1768,
     type: 3}
   ignoreLayer:

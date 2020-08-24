@@ -1040,12 +1040,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4318877c675bc648983c791add4b4a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tunnelWalls:
+  - {fileID: 2100000, guid: 0ffeb3bd04dbaeb43b5a31ebebedddb2, type: 2}
+  - {fileID: 2100000, guid: 401affefb16c610489e6ad7b12f9a26b, type: 2}
+  - {fileID: 2100000, guid: 0ffeb3bd04dbaeb43b5a31ebebedddb2, type: 2}
+  - {fileID: 2100000, guid: 3c84204f811488443aa92c58ec00f970, type: 2}
+  - {fileID: 2100000, guid: 401affefb16c610489e6ad7b12f9a26b, type: 2}
   walls:
-  - {fileID: 2100000, guid: 07446de64eef8414bacdd96c18f6f8e4, type: 2}
   - {fileID: 2100000, guid: 515951fb327939547a120861a948cdb2, type: 2}
   - {fileID: 2100000, guid: 07446de64eef8414bacdd96c18f6f8e4, type: 2}
   - {fileID: 2100000, guid: 515951fb327939547a120861a948cdb2, type: 2}
   - {fileID: 2100000, guid: 07446de64eef8414bacdd96c18f6f8e4, type: 2}
+  - {fileID: 2100000, guid: 515951fb327939547a120861a948cdb2, type: 2}
   hexWalls:
   - {fileID: 2100000, guid: 07446de64eef8414bacdd96c18f6f8e4, type: 2}
   - {fileID: 2100000, guid: 515951fb327939547a120861a948cdb2, type: 2}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArenaMaterials : MonoBehaviour
 {
+  public Material[] tunnelWalls;
   public Material[] walls;
   public Material[] hexWalls;
   public Material[] hexFaces;
@@ -32,6 +33,9 @@ public class ArenaMaterials : MonoBehaviour
     Material[] m;
     switch( type )
     {
+      case "TUNNEL":
+        m = tunnelWalls;
+        break;
       case "WALL":
         m = walls;
         break;

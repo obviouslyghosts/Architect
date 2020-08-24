@@ -62,6 +62,21 @@ public class ArenaController : MonoBehaviour
 
     tunnel = Instantiate( tunnelPrefab, pos, Quaternion.identity );
     tunnel.transform.LookAt( center );
+    SetTunnelMaterials( );
+  }
+
+  public void SetTunnelMaterials( )
+  {
+    int lvl = GameObject.Find( "GameController" ).GetComponent<GameController>().GetLevel();
+    GameObject[] objs;
+    objs = GameObject.FindGameObjectsWithTag( "Tunnel-Mesh" );
+    Material m = arenaMaterials.GetMat( "TUNNEL", lvl );
+    foreach (GameObject h in objs)
+    {
+      Material[] mats = h.GetComponent<Renderer>().materials;
+      mats[0] = m;
+      h.GetComponent<Renderer>().materials = mats;
+    }
   }
 
   public void ResetMaterials( )
@@ -86,8 +101,8 @@ public class ArenaController : MonoBehaviour
     // WALLS
     objs = GameObject.FindGameObjectsWithTag( "Wall-Mesh" );
     m = arenaMaterials.GetMat( "WALL", lvl );
-    Debug.Log( m );
-    Debug.Log( "Number of Walls: " + objs.Length );
+    // Debug.Log( m );
+    // Debug.Log( "Number of Walls: " + objs.Length );
     foreach (GameObject h in objs)
     {
       Material[] mats = h.GetComponent<Renderer>().materials;

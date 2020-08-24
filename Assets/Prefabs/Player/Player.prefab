@@ -612,6 +612,21 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1680089689176708021, guid: e223dcabe90104f408ba72e8d98e70e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680089689176708021, guid: e223dcabe90104f408ba72e8d98e70e9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.584
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680089689176708021, guid: e223dcabe90104f408ba72e8d98e70e9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.106
+      objectReference: {fileID: 0}
     - target: {fileID: 3585409100606588322, guid: e223dcabe90104f408ba72e8d98e70e9,
         type: 3}
       propertyPath: fpsCam
@@ -622,6 +637,11 @@ PrefabInstance:
       propertyPath: gunAnim
       value: 
       objectReference: {fileID: 5600252907392008051}
+    - target: {fileID: 4421470568247246912, guid: e223dcabe90104f408ba72e8d98e70e9,
+        type: 3}
+      propertyPath: m_Name
+      value: ShootPos
+      objectReference: {fileID: 0}
     - target: {fileID: 4526194837219210633, guid: e223dcabe90104f408ba72e8d98e70e9,
         type: 3}
       propertyPath: player

@@ -90,6 +90,7 @@ public class PlayerStatus : MonoBehaviour
   {
     Debug.Log("UPCRUSHER");
     Crush( Vector2.up );
+    // arenaController.SetTunnelMaterials();
   }
 
   private void Crush( Vector2 d)
@@ -259,6 +260,7 @@ public class PlayerStatus : MonoBehaviour
           arenaController.ResetHexes( true );
           arenaController.ClearRoom();
           arenaController.SpawnRoom();
+          arenaController.SetTunnelMaterials();
 
           // arenaController
           tAlarm = textTimer;
