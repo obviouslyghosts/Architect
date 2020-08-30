@@ -32,11 +32,8 @@ public class WallShut : MonoBehaviour
       else
       {
         bool tunnelCheck = other.gameObject.GetComponent<PlayerStatus>().TunnelCheck( );
-        // bool keyCheck = other.gameObject.GetComponent<PlayerStatus>().HasKeyCard( );
-
         GameObject.Find( "Arena" ).GetComponent<ArenaController>().LeavingTunnel( !tunnelCheck );
       }
-      // other.gameObject.GetComponent<PlayerStatus>().LeftTunnel( true );
     }
   }
 

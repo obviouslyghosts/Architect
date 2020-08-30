@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CrushController : MonoBehaviour
 {
   public Animator hexAnimator;
   public MeshCollider hexCollision;
+  public float crushTimerDelay = 0.5f;
   // public GameObject interactable;
   public GameObject pillarPrefab;
   public Crusher crusher;
+  public AudioSource slam;
+  private AudioManager audioManager;
   private float timer = 0f;
   private float alarm = 1f;
 
   private bool isPrimed = true;
+
+  private void Start()
+  {
+    audioManager = GameObject.Find( "AudioManager" ).GetComponent<AudioManager>();
+  }
 
   private void Update()
   {
@@ -47,6 +56,7 @@ public class CrushController : MonoBehaviour
     {
       Debug.Log("Crushing");
       hexAnimator.SetTrigger( "Crush" );
+      slam.PlayDelayed( crushTimerDelay );
       crusher.SetCrushable( true );
       isPrimed = false;
     }
@@ -78,6 +88,7 @@ public class CrushController : MonoBehaviour
     }
 
     hexAnimator.SetTrigger( "Chase" );
+    audioManager.PlayDelay( "CHASE", 0.55f );
     isPrimed = true;
   }
 

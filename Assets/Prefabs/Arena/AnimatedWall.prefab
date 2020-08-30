@@ -189,9 +189,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexAnimator: {fileID: 3718537885081865053}
   hexCollision: {fileID: 8528055104817117143}
+  crushTimerDelay: 0.4
   pillarPrefab: {fileID: 4479163251578525709, guid: 30b38abdfa7571f4a8896bc8a92e658a,
     type: 3}
   crusher: {fileID: 8541115747589737331}
+  slam: {fileID: 0}
 --- !u!114 &8879058992885382286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7427361467865936355}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73692e3e9355474499485fe4e1d9a1ad, type: 3}
   m_Name: 

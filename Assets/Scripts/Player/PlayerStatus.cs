@@ -22,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
   public GameObject ground;
   public GameObject ceiling;
   public MouseLook mouseLook;
+  private AudioManager audioManager;
   private bool takingDamage = false;
   private bool dead = false;
   private bool crushed = false;
@@ -89,12 +90,14 @@ public class PlayerStatus : MonoBehaviour
   public void UpCrush()
   {
     Debug.Log("UPCRUSHER");
+    PickupKeyCard( false );
     Crush( Vector2.up );
     // arenaController.SetTunnelMaterials();
   }
 
   private void Crush( Vector2 d)
   {
+    audioManager.Play( "SPLAT" );
     gameObject.GetComponent<CharacterController>().enabled = false;
     crushDirection = d;
     camSPos = cam.transform.position;
@@ -131,7 +134,10 @@ public class PlayerStatus : MonoBehaviour
 
   public void PickupKeyCard( bool v )
   {
-    arenaController.OpenRandomWall();
+    if ( v )
+    {
+      arenaController.OpenRandomWall();
+    }
     hasKeyCard = v;
   }
 
@@ -154,6 +160,7 @@ public class PlayerStatus : MonoBehaviour
     damageScreen.color = colorTransparent;
     // Game Controller is Singleton
     gameController = GameObject.Find( "GameController" ).GetComponent<GameController>();
+    audioManager = GameObject.Find( "AudioManager" ).GetComponent<AudioManager>();
     // gameController.ShowLevelText( true, 0 );
     tAlarm = textTimer;
     camY = cam.transform.position.y;
@@ -177,6 +184,7 @@ public class PlayerStatus : MonoBehaviour
         arenaController.ResetHexes( true );
         arenaController.ClearRoom();
         mouseLook.Unlock();
+        audioManager.EndFight();
         gameController.IsDead();
       }
     }
@@ -259,8 +267,10 @@ public class PlayerStatus : MonoBehaviour
           gameController.ShowLevelText( true, (int)crushDirection.y );
           arenaController.ResetHexes( true );
           arenaController.ClearRoom();
-          arenaController.SpawnRoom();
+          // arenaController.SpawnRoom();
           arenaController.SetTunnelMaterials();
+          // inTunnel = false;
+          InTunnel( false );
 
           // arenaController
           tAlarm = textTimer;

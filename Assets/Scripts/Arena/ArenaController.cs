@@ -26,7 +26,6 @@ public class ArenaController : MonoBehaviour
     ResetMaterials();
     OpenRandomWall();
     EnterThroughTunnel();
-    SpawnRoom();
   }
 
   public void EnterThroughTunnel( )
@@ -44,6 +43,8 @@ public class ArenaController : MonoBehaviour
     {
       wall.GetComponent<WallController>().Crush( true );
       Destroy( tunnel, 1f );
+      // spawn room
+      SpawnRoom();
     }
   }
 
@@ -137,14 +138,6 @@ public class ArenaController : MonoBehaviour
     {
       h.GetComponent<CrushController>().Chase();
     }
-
-    // GameObject[] hexes;
-    // hexes = GameObject.FindGameObjectsWithTag("UpCrusher");
-    // foreach (GameObject h in hexes)
-    // {
-    //   h.GetComponent<UpCrusherController>().Chase();
-    // }
-
     if ( v )
     {
       ResetMaterials();

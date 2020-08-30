@@ -7,6 +7,8 @@ public class UpCrusherController : MonoBehaviour
   public Animator hexAnimator;
   // public MeshCollider hexCollision;
   public UpCrusher upCrusher;
+  public AudioSource slam;
+  public float crushTimerDelay = 0.5f;
 
   private float timer = 0f;
   private float alarm = 1f;
@@ -29,6 +31,8 @@ public class UpCrusherController : MonoBehaviour
       if ( isPrimed )
       {
         Crush( true );
+        GameObject.Find( "Pedastal" ).SetActive( false );
+        GetComponent<BoxCollider>().enabled = false;
         timer = alarm;
       }
       else
@@ -47,6 +51,7 @@ public class UpCrusherController : MonoBehaviour
       Debug.Log("Up Crushing!");
       hexAnimator.SetTrigger( "Crush" );
       upCrusher.SetUpCrushable( true );
+      slam.PlayDelayed( crushTimerDelay );
 
       isPrimed = false;
     }
@@ -65,6 +70,16 @@ public class UpCrusherController : MonoBehaviour
   {
     hexAnimator.SetTrigger( "Chase" );
     isPrimed = true;
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    if ( other.gameObject.tag == "Player" )
+    {
+      bool key = GameObject.Find( "Player" ).GetComponent<PlayerStatus>().HasKeyCard( );
+      GetComponent<BoxCollider>().enabled = false;
+      GameObject.Find( "Pedastal" ).SetActive( key );
+    }
   }
 
 }

@@ -69,7 +69,11 @@ public class PlayerInteraction : MonoBehaviour
         GameObject.Find( "AnimatedHex" ).GetComponent<CrushController>().Trigger( );
         break;
       case "UpCrush":
-        GameObject.Find( "UpCrusher" ).GetComponent<UpCrusherController>().Trigger( );
+        bool key = GameObject.Find( "Player" ).GetComponent<PlayerStatus>().HasKeyCard( );
+        if ( key )
+        {
+          GameObject.Find( "UpCrusher" ).GetComponent<UpCrusherController>().Trigger( );
+        }
         break;
       default:
         break;

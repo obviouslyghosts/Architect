@@ -19,8 +19,14 @@ public class Gun : MonoBehaviour
   public LayerMask ignoreLayer;
 
   private float nextTimeToFire = 0f;
+  private AudioManager audioManager;
 
   // Update is called once per frame
+  private void Start()
+  {
+    audioManager = GameObject.Find( "AudioManager" ).GetComponent<AudioManager>();
+  }
+
   void Update()
   {
     if ( Input.GetButton( "Fire1" ) && Time.time >= nextTimeToFire )
@@ -38,6 +44,7 @@ public class Gun : MonoBehaviour
     Destroy( fxShoot, 1f );
     // muzzleFlash.Play();
     gunAnim.Shoot( true );
+    audioManager.Play( "SHOOT" );
 
     RaycastHit hit;
     // if (Physics.Raycast(Camera.main.ScreenPointToRay(location), out hit, Mathf.Infinity, 1 << LayerMask.NameToLayer("Terrain")))

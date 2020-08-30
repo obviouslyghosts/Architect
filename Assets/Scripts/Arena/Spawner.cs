@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
   public float spawnTimer = 1f;
   private bool wavesRemaining = true;
   private GameController gameController;
+  private AudioManager audioManger;
 
   private void Start()
   {
@@ -24,6 +25,7 @@ public class Spawner : MonoBehaviour
       alarm = waveTimers[ wave ];
     }
     gameController = GameObject.Find( "GameController" ).GetComponent<GameController>();
+    audioManger = GameObject.Find( "AudioManager" ).GetComponent<AudioManager>();
   }
 
   public void ClearRoom()
@@ -34,11 +36,14 @@ public class Spawner : MonoBehaviour
       Destroy( e );
     }
     spawnedEnemies = 0;
+    audioManger.EndFight();
+    
   }
 
   public void SpawnRoom()
   {
     sAlarm = spawnTimer;
+    audioManger.FightMusic( );
   }
 
   public void DestroyedEnemy( Vector3 p )

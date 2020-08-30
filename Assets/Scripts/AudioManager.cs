@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 
   public Sound[] sounds;
   public static AudioManager instance;
+  private Sound music;
 
   void Awake()
   {
@@ -36,7 +37,8 @@ public class AudioManager : MonoBehaviour
 
   void Start()
   {
-    // Play("Theme");
+    Play("MUSIC");
+    music = Array.Find(sounds, sound => sound.name == "MUSIC");
   }
 
   public void Play(string name)
@@ -48,6 +50,40 @@ public class AudioManager : MonoBehaviour
       return;
     }
     s.source.Play();
+    // if ( )
   }
+
+  public void FightMusic( )
+  {
+    string name = "THEME1";
+    Sound s = Array.Find(sounds, sound => sound.name == name);
+    if (s == null)
+    {
+      Debug.LogWarning("Sound: " + name + " not found!");
+      return;
+    }
+    music.source.Stop();
+    s.source.Play();
+    music = s;
+  }
+
+  public void EndFight()
+  {
+    music.source.Stop();
+    Play("MUSIC");
+    music = Array.Find(sounds, sound => sound.name == "MUSIC");
+  }
+
+  public void PlayDelay(string name, float d)
+  {
+    Sound s = Array.Find(sounds, sound => sound.name == name);
+    if (s == null)
+    {
+      Debug.LogWarning("Sound: " + name + " not found!");
+      return;
+    }
+    s.source.PlayDelayed( d );
+  }
+
 
 }
