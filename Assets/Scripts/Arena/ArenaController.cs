@@ -42,10 +42,16 @@ public class ArenaController : MonoBehaviour
     if ( v )
     {
       wall.GetComponent<WallController>().Crush( true );
+      ToggleLights( false );
       Destroy( tunnel, 1f );
       // spawn room
       SpawnRoom();
     }
+  }
+
+  public void ToggleLights( bool v )
+  {
+    // roomLight.enabled = v;
   }
 
   public void OpenRandomWall()
@@ -56,6 +62,7 @@ public class ArenaController : MonoBehaviour
       Destroy( tunnel, 1f );
     }
 
+
     GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
     wall = walls[ UnityEngine.Random.Range(0, walls.Length ) ];
     Vector3 pos = wall.transform.position;
@@ -64,6 +71,8 @@ public class ArenaController : MonoBehaviour
     tunnel = Instantiate( tunnelPrefab, pos, Quaternion.identity );
     tunnel.transform.LookAt( center );
     SetTunnelMaterials( );
+    ToggleLights( true );
+    // roomLight.gameObject.transform.position = wall.transform.position;
   }
 
   public void SetTunnelMaterials( )
@@ -125,6 +134,7 @@ public class ArenaController : MonoBehaviour
       // h.GetComponent<Renderer>().materials[0] = m;
     }
 
+    roomLight.gameObject.transform.position = new Vector3(0f, 0.75f, 0f);
     roomLight.color = arenaMaterials.GetColor( "ROOM", lvl );
   }
 
@@ -151,6 +161,7 @@ public class ArenaController : MonoBehaviour
 
   public void SpawnRoom()
   {
+    ToggleLights( false );
     spawner.SpawnRoom();
   }
 

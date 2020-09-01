@@ -73,6 +73,7 @@ public class PlayerInteraction : MonoBehaviour
         if ( key )
         {
           GameObject.Find( "UpCrusher" ).GetComponent<UpCrusherController>().Trigger( );
+          ManualTriggerReset( );
         }
         break;
       default:
